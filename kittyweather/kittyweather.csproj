@@ -12,10 +12,10 @@
         <ImplicitUsings>enable</ImplicitUsings>
 
         <!-- Display name -->
-        <ApplicationTitle>kittyweather</ApplicationTitle>
+        <ApplicationTitle>KittyWeather</ApplicationTitle>
 
         <!-- App Identifier -->
-        <ApplicationId>com.companyname.kittyweather</ApplicationId>
+        <ApplicationId>com.pazurkota.kittyweather</ApplicationId>
         <ApplicationIdGuid>D2C661CE-3054-40CC-AD1B-C29B5DDBAF35</ApplicationIdGuid>
 
         <!-- Versions -->
