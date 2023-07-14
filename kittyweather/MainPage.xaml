@@ -2,9 +2,22 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="kittyweather.MainPage">
-
-    <StackLayout>
-        
+    
+    <ContentPage.Resources>
+        <!-- Basic label style -->
+        <Style x:Key="BasicLabelStyle" TargetType="Label">
+            <Setter Property="Background" Value="Gray" />
+            <Setter Property="WidthRequest" Value="200"/>
+            <Setter Property="HeightRequest" Value="100"/>
+            <Setter Property="HorizontalTextAlignment" Value="Center"></Setter>
+            <Setter Property="VerticalTextAlignment" Value="Center"></Setter>
+        </Style>
+    </ContentPage.Resources>
+    
+    <StackLayout Margin="20">
+        <Label Style="{DynamicResource BasicLabelStyle}">
+            Temperature: 10C*
+        </Label>
     </StackLayout>
 
 </ContentPage>
