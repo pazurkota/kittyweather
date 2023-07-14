@@ -7,17 +7,32 @@
         <!-- Basic label style -->
         <Style x:Key="BasicLabelStyle" TargetType="Label">
             <Setter Property="Background" Value="Gray" />
-            <Setter Property="WidthRequest" Value="200"/>
-            <Setter Property="HeightRequest" Value="100"/>
-            <Setter Property="HorizontalTextAlignment" Value="Center"></Setter>
-            <Setter Property="VerticalTextAlignment" Value="Center"></Setter>
+            <Setter Property="WidthRequest" Value="250" />
+            <Setter Property="HeightRequest" Value="100" />
+            <Setter Property="HorizontalTextAlignment" Value="Center" />
+            <Setter Property="VerticalTextAlignment" Value="Center" />
+            <Setter Property="VerticalOptions" Value="Center" />
+            <Setter Property="HorizontalOptions" Value="Center" />
+        </Style>
+        
+        <!-- Basic button style -->
+        <Style x:Key="BasicButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="Green" />
+            <Setter Property="WidthRequest" Value="150" />
+            <Setter Property="HeightRequest" Value="50"/>
+            <Setter Property="VerticalOptions" Value="Center" />
+            <Setter Property="HorizontalOptions" Value="Center" />
         </Style>
     </ContentPage.Resources>
     
     <StackLayout Margin="20">
-        <Label Style="{DynamicResource BasicLabelStyle}">
-            Temperature: 10C*
-        </Label>
+        <Label Style="{DynamicResource BasicLabelStyle}" 
+               x:Name="TemperatureText" 
+               Text="Temperature = 10"/>
+        <Button 
+            Style="{DynamicResource BasicButtonStyle}" 
+            Clicked="RefreshTemperature"
+            Text="Refresh Data"/>
     </StackLayout>
 
 </ContentPage>
