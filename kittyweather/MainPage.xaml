@@ -17,13 +17,21 @@
             <Setter Property="HorizontalOptions" Value="Center" />
             <Setter Property="VerticalOptions" Value="Start" />
         </Style>
+        
+        <!-- Test BoxView -->
+        <Style x:Key="TestBoxView" TargetType="BoxView">
+            <Setter Property="Color" Value="Gray"/>
+            <Setter Property="VerticalOptions" Value="Center"/>
+            <Setter Property="HorizontalOptions" Value="Fill"/>
+            <Setter Property="CornerRadius" Value="15"/>
+        </Style>
     </ContentPage.Resources>
     
-    <Grid Margin="10">
+    <Grid RowSpacing="15" ColumnSpacing="15" Margin="15, 0, 15, 15">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="200"/>
         </Grid.RowDefinitions>
         
         <Grid.ColumnDefinitions>
@@ -55,6 +63,23 @@
             Grid.ColumnSpan="2"
             Text="Cloudy"
             Style="{DynamicResource CurrentWeatherText}"
+            />
+        
+        <!-- Hourly weather concept -->
+        <BoxView 
+            Grid.Row="2"
+            Grid.Column="0"
+            Grid.ColumnSpan="2"
+            Style="{DynamicResource TestBoxView}"
+            />
+        <Label 
+            Grid.Row="2"
+            Grid.Column="0"
+            Grid.ColumnSpan="2"
+            Text="Hourly Weather Data"
+            FontSize="30"
+            HorizontalTextAlignment="Center"
+            VerticalTextAlignment="Center"
             />
     </Grid>
 
