@@ -50,10 +50,10 @@
         <Image 
             Grid.Row="0"
             Grid.Column="1"
-            Source="cloudy.svg"
+            Source="cloudy.png"
             HeightRequest="100"
             VerticalOptions="Center"
-            HorizontalOptions="Center"
+            HorizontalOptions="Start"
         />
         
         <!-- Current weather text -->
