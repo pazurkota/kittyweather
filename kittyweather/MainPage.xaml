@@ -56,10 +56,11 @@
             />
         
         <!-- Weather icon -->
-        <BoxView 
+        <Image 
             Grid.Row="0"
             Grid.Column="1"
-            Color="Gray"
+            Source="cloudy.png"
+            HeightRequest="150"
             />
         
         <!-- Weather for next hours -->
