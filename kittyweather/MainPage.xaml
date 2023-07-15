@@ -25,14 +25,39 @@
         </Style>
     </ContentPage.Resources>
     
-    <StackLayout Margin="20">
-        <Label Style="{DynamicResource BasicLabelStyle}" 
-               x:Name="TemperatureText" 
-               Text="Temperature = 10"/>
-        <Button 
-            Style="{DynamicResource BasicButtonStyle}" 
-            Clicked="RefreshTemperature"
-            Text="Refresh Data"/>
-    </StackLayout>
+    <Grid ColumnSpacing="20" RowSpacing="20" Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        
+        <!-- Temperature and weather condition -->
+        <BoxView 
+            Grid.Row="0"
+            Grid.Column="0"
+            Color="Gray"
+        />
+        
+        <!-- Weather icon -->
+        <BoxView 
+            Grid.Row="0"
+            Grid.Column="1"
+            Color="Gray"
+        />
+        
+        <!-- Weather for next hours -->
+        <BoxView 
+            Grid.Row="1"
+            Grid.Column="0"
+            Grid.ColumnSpan="2"
+            Color="Gray"
+            />
+    </Grid>
 
 </ContentPage>
