@@ -6,9 +6,9 @@
     <ContentPage.Resources>
         <!-- Temperature Text -->
         <Style x:Key="TemperatureText" TargetType="Label">
-            <Setter Property="FontSize" Value="80" />
-            <Setter Property="HorizontalOptions" Value="Center" />
-            <Setter Property="VerticalOptions" Value="Start" />
+            <Setter Property="FontSize" Value="70" />
+            <Setter Property="HorizontalOptions" Value="End" />
+            <Setter Property="VerticalOptions" Value="Center" />
         </Style>
         
         <!-- Weather current state text -->
@@ -77,7 +77,7 @@
             Grid.Column="0"
             Grid.ColumnSpan="2"
             Text="Hourly Weather Data"
-            FontSize="30"
+            FontSize="40"
             HorizontalTextAlignment="Center"
             VerticalTextAlignment="Center"
             />
