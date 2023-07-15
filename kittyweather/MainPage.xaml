@@ -38,18 +38,29 @@
         </Grid.ColumnDefinitions>
         
         <!-- Temperature and weather condition -->
-        <BoxView 
+        <Label 
             Grid.Row="0"
             Grid.Column="0"
-            Color="Gray"
-        />
+            Text="20°C"
+            FontSize="70"
+            HorizontalOptions="Center"
+            VerticalOptions="Center"
+            />
+        <Label 
+            Grid.Row="0"
+            Grid.Column="0"
+            Text="Cloudy"
+            FontSize="30"
+            HorizontalOptions="Center"
+            VerticalOptions="End"
+            />
         
         <!-- Weather icon -->
         <BoxView 
             Grid.Row="0"
             Grid.Column="1"
             Color="Gray"
-        />
+            />
         
         <!-- Weather for next hours -->
         <BoxView 
