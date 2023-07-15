@@ -4,32 +4,26 @@
              x:Class="kittyweather.MainPage">
     
     <ContentPage.Resources>
-        <!-- Basic label style -->
-        <Style x:Key="BasicLabelStyle" TargetType="Label">
-            <Setter Property="Background" Value="Gray" />
-            <Setter Property="WidthRequest" Value="250" />
-            <Setter Property="HeightRequest" Value="100" />
-            <Setter Property="HorizontalTextAlignment" Value="Center" />
-            <Setter Property="VerticalTextAlignment" Value="Center" />
-            <Setter Property="VerticalOptions" Value="Center" />
+        <!-- Temperature Text -->
+        <Style x:Key="TemperatureText" TargetType="Label">
+            <Setter Property="FontSize" Value="80" />
             <Setter Property="HorizontalOptions" Value="Center" />
+            <Setter Property="VerticalOptions" Value="Start" />
         </Style>
         
-        <!-- Basic button style -->
-        <Style x:Key="BasicButtonStyle" TargetType="Button">
-            <Setter Property="Background" Value="Green" />
-            <Setter Property="WidthRequest" Value="150" />
-            <Setter Property="HeightRequest" Value="50"/>
-            <Setter Property="VerticalOptions" Value="Center" />
+        <!-- Weather current state text -->
+        <Style x:Key="CurrentWeatherText" TargetType="Label">
+            <Setter Property="FontSize" Value="20" />
             <Setter Property="HorizontalOptions" Value="Center" />
+            <Setter Property="VerticalOptions" Value="Start" />
         </Style>
     </ContentPage.Resources>
     
-    <Grid ColumnSpacing="20" RowSpacing="20" Margin="20">
+    <Grid Margin="10">
         <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
-            <RowDefinition />
-            <RowDefinition />
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         
         <Grid.ColumnDefinitions>
@@ -37,38 +31,30 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
         
-        <!-- Temperature and weather condition -->
+        <!-- Temperature and Weather Icon -->
         <Label 
             Grid.Row="0"
             Grid.Column="0"
             Text="20°C"
-            FontSize="70"
-            HorizontalOptions="Center"
-            VerticalOptions="Center"
-            />
-        <Label 
-            Grid.Row="0"
-            Grid.Column="0"
-            Text="Cloudy"
-            FontSize="30"
-            HorizontalOptions="Center"
-            VerticalOptions="End"
+            Style="{DynamicResource TemperatureText}"
             />
         
-        <!-- Weather icon -->
         <Image 
             Grid.Row="0"
             Grid.Column="1"
-            Source="cloudy.png"
-            HeightRequest="150"
-            />
+            Source="cloudy.svg"
+            HeightRequest="100"
+            VerticalOptions="Center"
+            HorizontalOptions="Center"
+        />
         
-        <!-- Weather for next hours -->
-        <BoxView 
+        <!-- Current weather text -->
+        <Label 
             Grid.Row="1"
             Grid.Column="0"
             Grid.ColumnSpan="2"
-            Color="Gray"
+            Text="Cloudy"
+            Style="{DynamicResource CurrentWeatherText}"
             />
     </Grid>
 
