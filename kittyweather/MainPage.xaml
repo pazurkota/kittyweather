@@ -2,40 +2,85 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="kittyweather.MainPage">
-
-    <ScrollView>
-        <VerticalStackLayout
-            Spacing="25"
-            Padding="30,0"
-            VerticalOptions="Center">
-
-            <Image
-                Source="dotnet_bot.png"
-                SemanticProperties.Description="Cute dot net bot waving hi to you!"
-                HeightRequest="200"
-                HorizontalOptions="Center" />
-
-            <Label
-                Text="Hello, World!"
-                SemanticProperties.HeadingLevel="Level1"
-                FontSize="32"
-                HorizontalOptions="Center" />
-
-            <Label
-                Text="Welcome to .NET Multi-platform App UI"
-                SemanticProperties.HeadingLevel="Level2"
-                SemanticProperties.Description="Welcome to dot net Multi platform App U I"
-                FontSize="18"
-                HorizontalOptions="Center" />
-
-            <Button
-                x:Name="CounterBtn"
-                Text="Click me"
-                SemanticProperties.Hint="Counts the number of times you click"
-                Clicked="OnCounterClicked"
-                HorizontalOptions="Center" />
-
-        </VerticalStackLayout>
-    </ScrollView>
+    
+    <ContentPage.Resources>
+        <!-- Temperature Text -->
+        <Style x:Key="TemperatureText" TargetType="Label">
+            <Setter Property="FontSize" Value="70" />
+            <Setter Property="HorizontalOptions" Value="End" />
+            <Setter Property="VerticalOptions" Value="Center" />
+        </Style>
+        
+        <!-- Weather current state text -->
+        <Style x:Key="CurrentWeatherText" TargetType="Label">
+            <Setter Property="FontSize" Value="20" />
+            <Setter Property="HorizontalOptions" Value="Center" />
+            <Setter Property="VerticalOptions" Value="Start" />
+        </Style>
+        
+        <!-- Test BoxView -->
+        <Style x:Key="TestBoxView" TargetType="BoxView">
+            <Setter Property="Color" Value="Gray"/>
+            <Setter Property="VerticalOptions" Value="Center"/>
+            <Setter Property="HorizontalOptions" Value="Fill"/>
+            <Setter Property="CornerRadius" Value="15"/>
+        </Style>
+    </ContentPage.Resources>
+    
+    <Grid RowSpacing="15" ColumnSpacing="15" Margin="15, 0, 15, 15">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="200"/>
+        </Grid.RowDefinitions>
+        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        
+        <!-- Temperature and Weather Icon -->
+        <Label 
+            Grid.Row="0"
+            Grid.Column="0"
+            Text="20°C"
+            Style="{DynamicResource TemperatureText}"
+            />
+        
+        <Image 
+            Grid.Row="0"
+            Grid.Column="1"
+            Source="cloudy.png"
+            HeightRequest="100"
+            VerticalOptions="Center"
+            HorizontalOptions="Start"
+        />
+        
+        <!-- Current weather text -->
+        <Label 
+            Grid.Row="1"
+            Grid.Column="0"
+            Grid.ColumnSpan="2"
+            Text="Cloudy"
+            Style="{DynamicResource CurrentWeatherText}"
+            />
+        
+        <!-- Hourly weather concept -->
+        <BoxView 
+            Grid.Row="2"
+            Grid.Column="0"
+            Grid.ColumnSpan="2"
+            Style="{DynamicResource TestBoxView}"
+            />
+        <Label 
+            Grid.Row="2"
+            Grid.Column="0"
+            Grid.ColumnSpan="2"
+            Text="Hourly Weather Data"
+            FontSize="40"
+            HorizontalTextAlignment="Center"
+            VerticalTextAlignment="Center"
+            />
+    </Grid>
 
 </ContentPage>
