@@ -27,4 +27,23 @@ public class ApiService : IApiService {
 
         return response;
     }
+    
+    public async Task<Weather> GetWeather(double latitude, double longitude) {
+        string apiKey = Preferences.Get("apiKey", "");
+
+        if (string.IsNullOrEmpty(apiKey)) {
+            throw new UnauthorizedAccessException("API Key is not set!");
+        }
+        
+        var options = new RestClientOptions(BASEURL) {
+            ThrowOnAnyError = true
+        };
+        
+        var client = new RestClient(options);
+        var request = new RestRequest($"forecast.json?key={apiKey}&q={latitude},{longitude}&aqi=yes&alerts=yes&days=2");
+        
+        var response = await client.GetAsync<Weather>(request);
+
+        return response;
+    }
 }
