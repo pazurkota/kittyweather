@@ -8,11 +8,14 @@
     Shell.FlyoutBehavior="Disabled">
 
     <TabBar>
+        <Tab Title="Settings" Icon="settings.svg">
+            <ShellContent ContentTemplate="{DataTemplate pages:SettingsPage}"/>
+        </Tab>
         <Tab Title="Weather" Icon="cloud.svg">
             <ShellContent ContentTemplate="{DataTemplate pages:WeatherPage}"/>
         </Tab>
-        <Tab Title="Settings" Icon="settings.svg">
-            <ShellContent ContentTemplate="{DataTemplate pages:SettingsPage}"/>
+        <Tab Title="About" Icon="help.svg">
+            <ShellContent ContentTemplate="{DataTemplate pages:AboutPage}"/>
         </Tab>
     </TabBar>
 
