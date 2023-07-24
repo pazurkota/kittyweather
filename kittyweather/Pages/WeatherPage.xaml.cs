@@ -12,7 +12,7 @@ public partial class WeatherPage : ContentPage {
         var apiService = new ApiService();
 
         try {
-            var weather = await apiService.GetWeather("auto:ip");
+            var weather = apiService.GetWeather("auto:ip");
 
             CityName.Text = weather.Location.Name;
             WeatherDescription.Text = $"{weather.Current.TemperatureC}°C, {weather.Current.Condition.ConditionState}";
