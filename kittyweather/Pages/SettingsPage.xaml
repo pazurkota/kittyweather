@@ -13,28 +13,42 @@
         </Style>    
     </ContentPage.Resources>
     
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="70"/>
-            <RowDefinition />
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition />
-            <ColumnDefinition />
-        </Grid.ColumnDefinitions>
+    <Grid RowDefinitions="70, 40, 60, Auto">
             
         <BoxView
             Grid.Row="0"
             Grid.Column="0"
-            Grid.ColumnSpan="2"
             Color="{DynamicResource Primary}"
             />
         <Label 
             Grid.Row="0"
             Grid.Column="0"
-            Grid.ColumnSpan="2"
             Text="Settings"
             Style="{StaticResource settingsPageText}"
+            />
+        
+        <!-- API Key setting -->
+        <Label 
+            Grid.Row="1"
+            Grid.Column="0"
+            Text="API Key"
+            HorizontalTextAlignment="Center"
+            VerticalTextAlignment="Center"
+            FontSize="30"
+            />
+        <Entry
+            Grid.Row="2"
+            Grid.Column="0"
+            Placeholder="Enter API Key"
+            Completed="OnEntryCompleted"
+            />
+        <Label 
+            x:Name="apiKeyLabel"
+            Grid.Row="3"
+            Grid.Column="0"
+            Text="API Key: not found!"
+            FontSize="20"
+            HorizontalTextAlignment="Center"
             />
     </Grid>
 </ContentPage>
