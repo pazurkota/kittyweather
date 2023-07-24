@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="kittyweather.Pages.WeatherPage">
+    
+    <ScrollView>
+        <Grid RowDefinitions="Auto, Auto, Auto, Auto, Auto" RowSpacing="20">
+            <!-- Search bar -->
+            <StackLayout Grid.Row="0" Margin="20, 20, 20, 0" Orientation="Horizontal" Spacing="20">
+                <Entry Placeholder="Search a city:"
+                       HorizontalOptions="FillAndExpand"/>
+                
+                <Button ImageSource="search.svg" 
+                        BackgroundColor="Transparent" 
+                        HorizontalOptions="End"
+                        WidthRequest="30"
+                        HeightRequest="30"/>
+            </StackLayout>
+            
+            <!-- City name with temperature and weather condition -->
+            <StackLayout Grid.Row="1" Orientation="Vertical">
+                <Label x:Name="CityName" 
+                    HorizontalOptions="Center"
+                    FontSize="40"
+                    TextColor="SlateGray"
+                    Text="Warsaw"/>
+                
+                <Label x:Name="WeatherDescription"
+                       HorizontalOptions="Center"
+                       FontSize="20"
+                       TextColor="SlateGray"
+                       Text="20°C, Cloudy"/>
+            </StackLayout>
+            
+            <!-- Weather Image -->
+            <Image Grid.Row="2" 
+                   x:Name="WeatherImage"
+                   Source="cloudy.svg"
+                   VerticalOptions="Start"
+                   WidthRequest="300"
+                   HeightRequest="300"/>
+            
+            <!-- Hourly weather -->
+            <CollectionView Grid.Row="4" x:Name="WeatherHourly" HeightRequest="100">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Horizontal"
+                                        ItemSpacing="10"/>
+                </CollectionView.ItemsLayout>
+                
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Grid.Row="4" RowDefinitions="Auto, Auto, Auto">
+                            <Image Grid.Row="0"
+                                   HorizontalOptions="Center"
+                                   VerticalOptions="Start"
+                                   HeightRequest="50"
+                                   WidthRequest="50"/>
+                            
+                            <Label Grid.Row="1"
+                                   FontSize="30"
+                                   HorizontalOptions="Center"/>
+                            
+                            <Label Grid.Row="2"
+                                   FontSize="15"
+                                   HorizontalOptions="Center"
+                                   />
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </Grid>
+    </ScrollView>
+</ContentPage>
