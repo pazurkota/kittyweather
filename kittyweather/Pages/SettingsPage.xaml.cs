@@ -5,12 +5,12 @@ namespace kittyweather.Pages;
 public partial class SettingsPage : ContentPage {
     public SettingsPage() {
         InitializeComponent();
+        
+        apiKeyLabel.Text = $"API Key: {Preferences.Get("apiKey", "Not found!")}";
     }
     
     private async void OnEntryCompleted(object sender, EventArgs e) {
         await DisplayAlert("Settings", "Api Key successfully saved!", "OK");
-        apiKeyLabel.Text = $"API Key: {((Entry)sender).Text}";
-        
-        Preferences.Set("apikey", $"{((Entry)sender).Text}");
+        Preferences.Set("apiKey", $"{((Entry)sender).Text}");
     }
 }

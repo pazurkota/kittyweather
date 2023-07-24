@@ -1,4 +1,5 @@
 ﻿using RestSharp;
+using Newtonsoft.Json;
 
 namespace kittyweather.Data;
 
@@ -10,7 +11,7 @@ public class ApiService : IApiService {
     private readonly string BASEURL = "https://api.weatherapi.com/v1/";
     
     public async Task<Weather> GetWeather(string cityName) {
-        string apiKey = Preferences.Get("apiKey", "");
+        string apiKey = Preferences.Get("apiKey", null);
 
         if (string.IsNullOrEmpty(apiKey)) {
             throw new UnauthorizedAccessException("API Key is not set!");
@@ -22,10 +23,11 @@ public class ApiService : IApiService {
         
         var client = new RestClient(options);
         var request = new RestRequest($"forecast.json?key={apiKey}&q={cityName}&aqi=yes&alerts=yes&days=2");
-        
-        var response = await client.GetAsync<Weather>(request);
 
-        return response;
+        var response = client.ExecuteAsync(request).Result.Content;
+        var weather = JsonConvert.DeserializeObject<Weather>(response);
+        
+        return weather;
     }
     
     public async Task<Weather> GetWeather(double latitude, double longitude) {
