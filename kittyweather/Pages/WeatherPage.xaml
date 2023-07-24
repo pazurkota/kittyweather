@@ -32,6 +32,14 @@
                        TextColor="SlateGray"
                        Text="20°C, Cloudy"/>
             </StackLayout>
+            
+            <!-- Weather Image -->
+            <Image Grid.Row="2" 
+                   x:Name="WeatherImage"
+                   Source="cloudy.svg"
+                   VerticalOptions="Start"
+                   WidthRequest="300"
+                   HeightRequest="300"/>
         </Grid>
     </ScrollView>
 </ContentPage>
