@@ -3,16 +3,21 @@
 namespace kittyweather.Pages; 
 
 public partial class WeatherPage : ContentPage {
+    private double latitude;
+    private double longitude;
+    
     public WeatherPage() {
         InitializeComponent();
     }
 
     protected override async void OnAppearing() {
         base.OnAppearing();
+        await GetDeviceLocation();
+        
         var apiService = new ApiService();
 
         try {
-            var weather = apiService.GetWeather("auto:ip");
+            var weather = apiService.GetWeather(latitude, longitude);
 
             CityName.Text = weather.Location.Name;
             WeatherDescription.Text = $"{weather.Current.TemperatureC}°C, {weather.Current.Condition.ConditionState}";
@@ -23,5 +28,11 @@ public partial class WeatherPage : ContentPage {
         catch (Exception e) {
             await DisplayAlert("Error Occured", e.Message, "OK");
         }
+    }
+
+    private async Task GetDeviceLocation() {
+        var location = await Geolocation.GetLocationAsync();
+        latitude = location.Latitude;
+        longitude = location.Longitude;
     }
 }
