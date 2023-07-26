@@ -41,6 +41,29 @@
                    WidthRequest="300"
                    HeightRequest="300"/>
             
+            <!-- Weather Alerts -->
+            <Grid Grid.Row="3" Margin="20, 0, 20, 0">
+                <BoxView HorizontalOptions="FillAndExpand" 
+                         VerticalOptions="Start"
+                         HeightRequest="120"
+                         CornerRadius="10"
+                         Color="DarkGray"
+                         Opacity="0.5"/>
+                
+                <Label Padding="10, 4, 0, 0"
+                       Text="WEATHER ALERT:"
+                       HorizontalOptions="Start"
+                       VerticalOptions="Start"
+                       FontSize="15"/>
+                
+                <Label Padding="10, 25, 10, 0"
+                       Text="SEVERE THUNDERSTORM WARNING issued by National Weather Service, until 8:00PM EST."
+                       HorizontalOptions="Start"
+                       VerticalOptions="Center"
+                       FontSize="18"/>
+            </Grid>
+            
+            
             <!-- Hourly weather -->
             <CollectionView Grid.Row="4" x:Name="WeatherHourly" HeightRequest="100">
                 <CollectionView.ItemsLayout>

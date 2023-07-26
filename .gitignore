@@ -1,6 +1,11 @@
 bin/
 obj/
+
+# Rider
 /packages/
 riderModule.iml
 /_ReSharper.Caches/
 .idea/.idea.kittyweather/.idea/
+
+# Visual Studio
+.vs
