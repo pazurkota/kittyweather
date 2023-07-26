@@ -2,13 +2,15 @@
 
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="kittyweather.Pages.WeatherPage">
+             x:Class="kittyweather.Pages.WeatherPage"
+             BackgroundColor="LightBlue">
     
     <ScrollView>
-        <Grid RowDefinitions="Auto, Auto, Auto, Auto, Auto" RowSpacing="20">
+        <Grid RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto" RowSpacing="20">
             <!-- Search bar -->
             <StackLayout Grid.Row="0" Margin="20, 20, 20, 0" Orientation="Horizontal" Spacing="20">
                 <Entry Placeholder="Search a city:"
+                       PlaceholderColor="Black"
                        HorizontalOptions="FillAndExpand"/>
                 
                 <Button ImageSource="search.svg" 
@@ -41,6 +43,27 @@
                    WidthRequest="300"
                    HeightRequest="300"/>
             
+            <!-- Weather Alerts -->
+            <Grid Grid.Row="3" Margin="20, 0">
+                <BoxView HorizontalOptions="FillAndExpand" 
+                         VerticalOptions="FillAndExpand"
+                         CornerRadius="10"
+                         Color="Black"
+                         Opacity="0.5"/>
+                
+                <Label Padding="10, 4, 0, 0"
+                       Text="WEATHER ALERT:"
+                       HorizontalOptions="Start"
+                       VerticalOptions="Start"
+                       FontSize="15"/>
+                
+                <Label Padding="10, 30, 10, 10"
+                       Text="SEVERE THUNDERSTORM WARNING issued by National Weather Service, until 8:00PM EST."
+                       HorizontalOptions="Start"
+                       VerticalOptions="Center"
+                       FontSize="18"/>
+            </Grid>
+            
             <!-- Hourly weather -->
             <CollectionView Grid.Row="4" x:Name="WeatherHourly" HeightRequest="100">
                 <CollectionView.ItemsLayout>
@@ -63,12 +86,168 @@
                             
                             <Label Grid.Row="2"
                                    FontSize="15"
-                                   HorizontalOptions="Center"
-                                   />
+                                   HorizontalOptions="Center"/>
                         </Grid>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
+
+            <!-- Humidity and Cloud Cover -->
+            <Grid Grid.Row="5" ColumnDefinitions="0.5*, 0.5*" Margin="20, 0" ColumnSpacing="20">
+                <!-- Column 0 -->
+                <BoxView Grid.Column="0"
+                         HorizontalOptions="FillAndExpand" 
+                         VerticalOptions="FillAndExpand"
+                         CornerRadius="10"
+                         Color="Black"
+                         Opacity="0.5"/>
+                
+                <Label Grid.Column="0"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Start"
+                       Text="Humidity:"
+                       FontSize="Large"/>
+
+                <Label Grid.Column="0"
+                       Padding="0, 30, 0, 0"
+                       x:Name="HumidityLabel"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Start"
+                       Text="37%"
+                       FontSize="60"
+                       />
+
+                <!-- Column 1 -->
+                <BoxView Grid.Column="1"
+                         HorizontalOptions="FillAndExpand" 
+                         VerticalOptions="FillAndExpand"
+                         CornerRadius="10"
+                         Color="Black"
+                         Opacity="0.5"/>
+
+                <Label Grid.Column="1"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Start"
+                       Text="Cloud cover:"
+                       FontSize="Large"/>
+
+                <Label Grid.Column="1"
+                       Padding="0, 25, 0, 0"
+                       x:Name="CloudCoverLabel"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Start"
+                       Text="74%"
+                       FontSize="60"
+                />
+            </Grid>
+
+            <!-- Air Pressure and Visibility -->
+            <Grid Grid.Row="6" ColumnDefinitions="0.5*, 0.5*" Margin="20, 0" ColumnSpacing="20">
+                <!-- Column 0 -->
+                <BoxView Grid.Column="0"
+                         HorizontalOptions="FillAndExpand" 
+                         VerticalOptions="FillAndExpand"
+                         CornerRadius="10"
+                         Color="Black"
+                         Opacity="0.5"/>
+
+                <Label Grid.Column="0"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Start"
+                       Text="Air pressure:"
+                       FontSize="Large"/>
+
+                <Label Grid.Column="0"
+                       Padding="0, 25, 0, 0"
+                       x:Name="AirPressureLabel"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Start"
+                       Text="1010"
+                       FontSize="60" />
+
+                <Label Grid.Column="0"
+                       HorizontalOptions="Center"
+                       VerticalOptions="EndAndExpand"
+                       Text="mbar"
+                       FontSize="15"/>
+
+                <!-- Column 1 -->
+                <BoxView Grid.Column="1"
+                         HorizontalOptions="FillAndExpand" 
+                         VerticalOptions="FillAndExpand"
+                         CornerRadius="10"
+                         Color="Black"
+                         Opacity="0.5"/>
+
+                <Label Grid.Column="1"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Start"
+                       Text="Visibility:"
+                       FontSize="Large"/>
+
+                <Label Grid.Column="1"
+                       Padding="0, 25, 0, 0"
+                       x:Name="VisibiltyLabel"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Start"
+                       Text="10KM"
+                       FontSize="60"
+                />
+            </Grid>
+
+            <!-- UV Index and Precipitation -->
+            <Grid Grid.Row="7" ColumnDefinitions="0.5*, 0.5*" Margin="20, 0" ColumnSpacing="20">
+                <!-- Column 0 -->
+                <BoxView Grid.Column="0"
+                         HorizontalOptions="FillAndExpand" 
+                         VerticalOptions="FillAndExpand"
+                         CornerRadius="10"
+                         Color="Black"
+                         Opacity="0.5"/>
+
+                <Label Grid.Column="0"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Start"
+                       Text="UV Index:"
+                       FontSize="Large"/>
+
+                <Label Grid.Column="0"
+                       Padding="0, 25, 0, 0"
+                       x:Name="UVIndexLabel"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Start"
+                       Text="3"
+                       FontSize="60" />
+
+                <Label Grid.Column="0"
+                       HorizontalOptions="Center"
+                       VerticalOptions="EndAndExpand"
+                       Text="Low"
+                       FontSize="15"/>
+
+                <!-- Column 1 -->
+                <BoxView Grid.Column="1"
+                         HorizontalOptions="FillAndExpand" 
+                         VerticalOptions="FillAndExpand"
+                         CornerRadius="10"
+                         Color="Black"
+                         Opacity="0.5"/>
+
+                <Label Grid.Column="1"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Start"
+                       Text="Precipitation:"
+                       FontSize="Large"/>
+
+                <Label Grid.Column="1"
+                       Padding="0, 25, 0, 0"
+                       x:Name="PrecipitationLabel"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Start"
+                       Text="13mm"
+                       FontSize="55"
+                />
+            </Grid>
         </Grid>
     </ScrollView>
 </ContentPage>
