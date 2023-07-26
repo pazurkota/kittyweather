@@ -111,18 +111,32 @@
                        x:Name="HumidityLabel"
                        HorizontalOptions="Center"
                        VerticalOptions="Start"
-                       Text="50%"
+                       Text="37%"
                        FontSize="60"
                        />
 
                 <!-- Column 1 -->
                 <BoxView Grid.Column="1"
                          HorizontalOptions="FillAndExpand" 
-                         VerticalOptions="Start"
-                         HeightRequest="100"
+                         VerticalOptions="FillAndExpand"
                          CornerRadius="10"
-                         Color="DarkGray"
+                         Color="Black"
                          Opacity="0.5"/>
+
+                <Label Grid.Column="1"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Start"
+                       Text="Cloud cover:"
+                       FontSize="Large"/>
+
+                <Label Grid.Column="1"
+                       Padding="0, 30, 0, 0"
+                       x:Name="CloudCoverLabel"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Start"
+                       Text="74%"
+                       FontSize="60"
+                />
             </Grid>
         </Grid>
     </ScrollView>
