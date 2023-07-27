@@ -113,7 +113,7 @@
                        x:Name="HumidityLabel"
                        HorizontalOptions="Center"
                        VerticalOptions="Start"
-                       Text="37%"
+                       Text=" "
                        FontSize="60"
                        />
 
@@ -136,7 +136,7 @@
                        x:Name="CloudCoverLabel"
                        HorizontalOptions="Center"
                        VerticalOptions="Start"
-                       Text="74%"
+                       Text=" "
                        FontSize="60"
                 />
             </Grid>
@@ -162,7 +162,7 @@
                        x:Name="AirPressureLabel"
                        HorizontalOptions="Center"
                        VerticalOptions="Start"
-                       Text="1010"
+                       Text=" "
                        FontSize="60" />
 
                 <Label Grid.Column="0"
@@ -190,9 +190,14 @@
                        x:Name="VisibiltyLabel"
                        HorizontalOptions="Center"
                        VerticalOptions="Start"
-                       Text="10KM"
-                       FontSize="60"
-                />
+                       Text=" "
+                       FontSize="60"/>
+
+                <Label Grid.Column="1"
+                       HorizontalOptions="Center"
+                       VerticalOptions="EndAndExpand"
+                       Text="km"
+                       FontSize="15"/>
             </Grid>
 
             <!-- UV Index and Precipitation -->
@@ -216,13 +221,14 @@
                        x:Name="UVIndexLabel"
                        HorizontalOptions="Center"
                        VerticalOptions="Start"
-                       Text="3"
+                       Text=" "
                        FontSize="60" />
 
                 <Label Grid.Column="0"
+                       x:Name="UVDescriptionLabel"
                        HorizontalOptions="Center"
                        VerticalOptions="EndAndExpand"
-                       Text="Low"
+                       Text=" "
                        FontSize="15"/>
 
                 <!-- Column 1 -->
@@ -244,9 +250,14 @@
                        x:Name="PrecipitationLabel"
                        HorizontalOptions="Center"
                        VerticalOptions="Start"
-                       Text="13mm"
-                       FontSize="55"
-                />
+                       Text=" "
+                       FontSize="55"/>
+
+                <Label Grid.Column="1"
+                       HorizontalOptions="Center"
+                       VerticalOptions="EndAndExpand"
+                       Text="mm"
+                       FontSize="15"/>
             </Grid>
         </Grid>
     </ScrollView>

@@ -21,6 +21,13 @@ public partial class WeatherPage : ContentPage {
 
             CityName.Text = weather.Location.Name;
             WeatherDescription.Text = $"{weather.Current.TemperatureC}°C, {weather.Current.Condition.ConditionState}";
+            HumidityLabel.Text = $"{weather.Current.Humidity}%";
+            CloudCoverLabel.Text = $"{weather.Current.Cloud}%";
+            AirPressureLabel.Text = $"{(int) weather.Current.PressureMb}";
+            VisibiltyLabel.Text = $"{weather.Current.VisibilityKm}";
+            UVIndexLabel.Text = $"{(int) weather.Current.UvIndex}";
+            UVDescriptionLabel.Text = $"{ShowUvIndex(weather.Current.UvIndex)}";
+            PrecipitationLabel.Text = $"{weather.Current.PrecipitationMm}";
         }
         catch (UnauthorizedAccessException) {
             await DisplayAlert("Error Occured", "API Key is not set! Go to settings and enter your API Key", "OK");
@@ -34,5 +41,22 @@ public partial class WeatherPage : ContentPage {
         var location = await Geolocation.GetLocationAsync();
         latitude = location.Latitude;
         longitude = location.Longitude;
+    }
+
+    private static string ShowUvIndex(decimal uvIndex)
+    {
+        if (uvIndex == 0)
+        {
+            return "No UV Index";
+        }
+
+        return uvIndex switch
+        {
+            < 3 => "Low",
+            < 6 => "Moderate",
+            < 8 => "High",
+            < 11 => "Very High",
+            _ => "Extreme"
+        };
     }
 }
