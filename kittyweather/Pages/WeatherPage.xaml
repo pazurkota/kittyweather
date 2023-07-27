@@ -4,6 +4,16 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="kittyweather.Pages.WeatherPage"
              BackgroundColor="LightBlue">
+
+    <ContentPage.Resources>
+        <Style x:Key="BlackBoxViewBg" TargetType="BoxView">
+            <Setter Property="Color" Value="Black"/>
+            <Setter Property="Opacity" Value="0.5"/>
+            <Setter Property="CornerRadius" Value="15"/>
+            <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
+            <Setter Property="VerticalOptions" Value="FillAndExpand"/>
+        </Style>
+    </ContentPage.Resources>
     
     <ScrollView>
         <Grid RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto" RowSpacing="20">
@@ -45,11 +55,7 @@
             
             <!-- Weather Alerts -->
             <Grid Grid.Row="3" Margin="20, 0">
-                <BoxView HorizontalOptions="FillAndExpand" 
-                         VerticalOptions="FillAndExpand"
-                         CornerRadius="10"
-                         Color="Black"
-                         Opacity="0.5"/>
+                <BoxView Style="{StaticResource BlackBoxViewBg}"/>
                 
                 <Label Padding="10, 4, 0, 0"
                        Text="WEATHER ALERT:"
@@ -94,13 +100,8 @@
 
             <!-- Humidity and Cloud Cover -->
             <Grid Grid.Row="5" ColumnDefinitions="0.5*, 0.5*" Margin="20, 0" ColumnSpacing="20">
-                <!-- Column 0 -->
-                <BoxView Grid.Column="0"
-                         HorizontalOptions="FillAndExpand" 
-                         VerticalOptions="FillAndExpand"
-                         CornerRadius="10"
-                         Color="Black"
-                         Opacity="0.5"/>
+                <!-- Humidity -->
+                <BoxView Grid.Column="0" Style="{StaticResource BlackBoxViewBg}"/>
                 
                 <Label Grid.Column="0"
                        HorizontalOptions="Center"
@@ -117,13 +118,8 @@
                        FontSize="60"
                        />
 
-                <!-- Column 1 -->
-                <BoxView Grid.Column="1"
-                         HorizontalOptions="FillAndExpand" 
-                         VerticalOptions="FillAndExpand"
-                         CornerRadius="10"
-                         Color="Black"
-                         Opacity="0.5"/>
+                <!-- Cloud cover -->
+                <BoxView Grid.Column="1" Style="{StaticResource BlackBoxViewBg}"/>
 
                 <Label Grid.Column="1"
                        HorizontalOptions="Center"
@@ -143,13 +139,8 @@
 
             <!-- Air Pressure and Visibility -->
             <Grid Grid.Row="6" ColumnDefinitions="0.5*, 0.5*" Margin="20, 0" ColumnSpacing="20">
-                <!-- Column 0 -->
-                <BoxView Grid.Column="0"
-                         HorizontalOptions="FillAndExpand" 
-                         VerticalOptions="FillAndExpand"
-                         CornerRadius="10"
-                         Color="Black"
-                         Opacity="0.5"/>
+                <!-- Air Pressure -->
+                <BoxView Grid.Column="0" Style="{StaticResource BlackBoxViewBg}"/>
 
                 <Label Grid.Column="0"
                        HorizontalOptions="Center"
@@ -171,13 +162,8 @@
                        Text="mbar"
                        FontSize="15"/>
 
-                <!-- Column 1 -->
-                <BoxView Grid.Column="1"
-                         HorizontalOptions="FillAndExpand" 
-                         VerticalOptions="FillAndExpand"
-                         CornerRadius="10"
-                         Color="Black"
-                         Opacity="0.5"/>
+                <!-- Visibility -->
+                <BoxView Grid.Column="1" Style="{StaticResource BlackBoxViewBg}"/>
 
                 <Label Grid.Column="1"
                        HorizontalOptions="Center"
@@ -202,13 +188,8 @@
 
             <!-- UV Index and Precipitation -->
             <Grid Grid.Row="7" ColumnDefinitions="0.5*, 0.5*" Margin="20, 0" ColumnSpacing="20">
-                <!-- Column 0 -->
-                <BoxView Grid.Column="0"
-                         HorizontalOptions="FillAndExpand" 
-                         VerticalOptions="FillAndExpand"
-                         CornerRadius="10"
-                         Color="Black"
-                         Opacity="0.5"/>
+                <!-- UV Index -->
+                <BoxView Grid.Column="0" Style="{StaticResource BlackBoxViewBg}"/>
 
                 <Label Grid.Column="0"
                        HorizontalOptions="Center"
@@ -231,13 +212,8 @@
                        Text=" "
                        FontSize="15"/>
 
-                <!-- Column 1 -->
-                <BoxView Grid.Column="1"
-                         HorizontalOptions="FillAndExpand" 
-                         VerticalOptions="FillAndExpand"
-                         CornerRadius="10"
-                         Color="Black"
-                         Opacity="0.5"/>
+                <!-- Precipitation -->
+                <BoxView Grid.Column="1" Style="{StaticResource BlackBoxViewBg}"/>
 
                 <Label Grid.Column="1"
                        HorizontalOptions="Center"
@@ -251,7 +227,7 @@
                        HorizontalOptions="Center"
                        VerticalOptions="Start"
                        Text=" "
-                       FontSize="55"/>
+                       FontSize="60"/>
 
                 <Label Grid.Column="1"
                        HorizontalOptions="Center"
