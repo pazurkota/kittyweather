@@ -13,6 +13,12 @@
             <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
             <Setter Property="VerticalOptions" Value="FillAndExpand"/>
         </Style>
+
+        <Style x:Key="TitleLabel" TargetType="Label">
+            <Setter Property="HorizontalOptions" Value="Center"/>
+            <Setter Property="VerticalOptions" Value="Start"/>
+            <Setter Property="FontSize" Value="Large"/>
+        </Style>
     </ContentPage.Resources>
     
     <ScrollView>
@@ -104,10 +110,8 @@
                 <BoxView Grid.Column="0" Style="{StaticResource BlackBoxViewBg}"/>
                 
                 <Label Grid.Column="0"
-                       HorizontalOptions="Center"
-                       VerticalOptions="Start"
-                       Text="Humidity:"
-                       FontSize="Large"/>
+                       Style="{StaticResource TitleLabel}"
+                       Text="Humidity:"/>
 
                 <Label Grid.Column="0"
                        Padding="0, 30, 0, 0"
@@ -122,10 +126,8 @@
                 <BoxView Grid.Column="1" Style="{StaticResource BlackBoxViewBg}"/>
 
                 <Label Grid.Column="1"
-                       HorizontalOptions="Center"
-                       VerticalOptions="Start"
-                       Text="Cloud cover:"
-                       FontSize="Large"/>
+                       Style="{StaticResource TitleLabel}"
+                       Text="Cloud cover:"/>
 
                 <Label Grid.Column="1"
                        Padding="0, 25, 0, 0"
@@ -143,10 +145,8 @@
                 <BoxView Grid.Column="0" Style="{StaticResource BlackBoxViewBg}"/>
 
                 <Label Grid.Column="0"
-                       HorizontalOptions="Center"
-                       VerticalOptions="Start"
-                       Text="Air pressure:"
-                       FontSize="Large"/>
+                       Style="{StaticResource TitleLabel}"
+                       Text="Air pressure:"/>
 
                 <Label Grid.Column="0"
                        Padding="0, 25, 0, 0"
@@ -166,10 +166,8 @@
                 <BoxView Grid.Column="1" Style="{StaticResource BlackBoxViewBg}"/>
 
                 <Label Grid.Column="1"
-                       HorizontalOptions="Center"
-                       VerticalOptions="Start"
-                       Text="Visibility:"
-                       FontSize="Large"/>
+                       Style="{StaticResource TitleLabel}"
+                       Text="Visibility:"/>
 
                 <Label Grid.Column="1"
                        Padding="0, 25, 0, 0"
@@ -192,10 +190,9 @@
                 <BoxView Grid.Column="0" Style="{StaticResource BlackBoxViewBg}"/>
 
                 <Label Grid.Column="0"
-                       HorizontalOptions="Center"
-                       VerticalOptions="Start"
+                       Style="{StaticResource TitleLabel}"
                        Text="UV Index:"
-                       FontSize="Large"/>
+                       />
 
                 <Label Grid.Column="0"
                        Padding="0, 25, 0, 0"
@@ -216,10 +213,8 @@
                 <BoxView Grid.Column="1" Style="{StaticResource BlackBoxViewBg}"/>
 
                 <Label Grid.Column="1"
-                       HorizontalOptions="Center"
-                       VerticalOptions="Start"
-                       Text="Precipitation:"
-                       FontSize="Large"/>
+                       Style="{StaticResource TitleLabel}"
+                       Text="Precipitation:"/>
 
                 <Label Grid.Column="1"
                        Padding="0, 25, 0, 0"
