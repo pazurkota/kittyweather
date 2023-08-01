@@ -5,6 +5,7 @@ namespace kittyweather.Pages;
 public partial class WeatherPage : ContentPage {
     private double latitude;
     private double longitude;
+    private readonly ApiService _apiService = new(); 
     
     public WeatherPage() {
         InitializeComponent();
@@ -13,11 +14,10 @@ public partial class WeatherPage : ContentPage {
     protected override async void OnAppearing() {
         base.OnAppearing();
         await GetDeviceLocation();
-        
-        var apiService = new ApiService();
 
         try {
-            var weather = apiService.GetWeather(latitude, longitude);
+            var weather = _apiService.GetWeather(latitude, longitude);
+            ShowWeatherAlert();
 
             CityName.Text = weather.Location.Name;
             WeatherDescription.Text = $"{weather.Current.TemperatureC}°C, {weather.Current.Condition.ConditionState}";
@@ -41,6 +41,16 @@ public partial class WeatherPage : ContentPage {
         var location = await Geolocation.GetLocationAsync();
         latitude = location.Latitude;
         longitude = location.Longitude;
+    }
+
+    private void ShowWeatherAlert() {
+        var data = _apiService.GetWeather(latitude, longitude);
+        var alert = data.Alerts.WeatherAlerts.First();
+
+        if (alert is not null) {
+            WeatherAlertBox.IsVisible = true;
+            WeatherAlertDesc.Text = $"{alert.AlertHeadline}";
+        }
     }
 
     private static string ShowUvIndex(decimal uvIndex)

@@ -60,7 +60,7 @@
                    HeightRequest="300"/>
             
             <!-- Weather Alerts -->
-            <Grid Grid.Row="3" Margin="20, 0">
+            <Grid Grid.Row="3" Margin="20, 0" x:Name="WeatherAlertBox" IsVisible="False">
                 <BoxView Style="{StaticResource BlackBoxViewBg}"/>
                 
                 <Label Padding="10, 4, 0, 0"
@@ -70,7 +70,8 @@
                        FontSize="15"/>
                 
                 <Label Padding="10, 30, 10, 10"
-                       Text="SEVERE THUNDERSTORM WARNING issued by National Weather Service, until 8:00PM EST."
+                       x:Name="WeatherAlertDesc"
+                       Text=" "
                        HorizontalOptions="Start"
                        VerticalOptions="Center"
                        FontSize="18"/>
