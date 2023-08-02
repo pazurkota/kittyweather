@@ -4,19 +4,35 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="kittyweather.Pages.AboutPage">
     <ContentPage.Content>
-        <VerticalStackLayout Margin="20">
-            <Label 
-                FontSize="25"
-                Text="Kitty Weather, written by pazurkota and Open Source contributors."
-                VerticalTextAlignment="Start"
-                HorizontalTextAlignment="Center"
-            />
-            <Label 
-                FontSize="12"
-                Text="GitHub repository: https://github.com/pazurkota/kittyweather"
-                VerticalTextAlignment="Center"
-                HorizontalTextAlignment="Center"
-                />
-        </VerticalStackLayout>
+        <Grid RowDefinitions="70, Auto, Auto">
+                <Grid Grid.Row="0">
+                    <BoxView
+                        VerticalOptions="Fill"
+                        Color="{DynamicResource Primary}"
+                    />
+                    <Label
+                        Text="About"
+                        FontSize="50"
+                        FontAttributes="Bold"
+                        TextColor="White"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center" />
+                </Grid>
+                
+                <Label Grid.Row="1"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Start"
+                       Text="Kitty Weather"
+                       FontSize="40"
+                       />
+                
+                <Label Grid.Row="2"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Start"
+                    Text="Created by pazurkota and open source contributors"
+                    HorizontalTextAlignment="Center"
+                    FontSize="20"
+                    />
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

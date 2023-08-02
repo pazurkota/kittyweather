@@ -151,7 +151,7 @@
                        Text="Air pressure:"/>
 
                 <Label Grid.Column="0"
-                       Padding="0, 25, 0, 0"
+                       Padding="0, 25, 0, 10"
                        x:Name="AirPressureLabel"
                        HorizontalOptions="Center"
                        VerticalOptions="Start"
@@ -162,7 +162,7 @@
                        HorizontalOptions="Center"
                        VerticalOptions="EndAndExpand"
                        Text="mbar"
-                       FontSize="15"/>
+                       FontSize="20"/>
 
                 <!-- Visibility -->
                 <BoxView Grid.Column="1" Style="{StaticResource BlackBoxViewBg}"/>
@@ -172,7 +172,7 @@
                        Text="Visibility:"/>
 
                 <Label Grid.Column="1"
-                       Padding="0, 25, 0, 0"
+                       Padding="0, 25, 0, 10"
                        x:Name="VisibiltyLabel"
                        HorizontalOptions="Center"
                        VerticalOptions="Start"
@@ -183,7 +183,7 @@
                        HorizontalOptions="Center"
                        VerticalOptions="EndAndExpand"
                        Text="km"
-                       FontSize="15"/>
+                       FontSize="20"/>
             </Grid>
 
             <!-- UV Index and Precipitation -->
@@ -197,7 +197,7 @@
                        />
 
                 <Label Grid.Column="0"
-                       Padding="0, 25, 0, 0"
+                       Padding="0, 25, 0, 10"
                        x:Name="UVIndexLabel"
                        HorizontalOptions="Center"
                        VerticalOptions="Start"
@@ -209,7 +209,7 @@
                        HorizontalOptions="Center"
                        VerticalOptions="EndAndExpand"
                        Text=" "
-                       FontSize="15"/>
+                       FontSize="20"/>
 
                 <!-- Precipitation -->
                 <BoxView Grid.Column="1" Style="{StaticResource BlackBoxViewBg}"/>
@@ -219,7 +219,7 @@
                        Text="Precipitation:"/>
 
                 <Label Grid.Column="1"
-                       Padding="0, 25, 0, 0"
+                       Padding="0, 25, 0, 10"
                        x:Name="PrecipitationLabel"
                        HorizontalOptions="Center"
                        VerticalOptions="Start"
@@ -230,7 +230,7 @@
                        HorizontalOptions="Center"
                        VerticalOptions="EndAndExpand"
                        Text="mm"
-                       FontSize="15"/>
+                       FontSize="20"/>
             </Grid>
         </Grid>
     </ScrollView>
