@@ -4,6 +4,8 @@
 <dict>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>Kitty Weather uses device geolocation to get weather from your current position</string>
 	<key>UIDeviceFamily</key>
 	<array>
 		<integer>1</integer>

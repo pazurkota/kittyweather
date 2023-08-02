@@ -1,6 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "kittyweather", "kittyweather\kittyweather.csproj", "{7345361F-B894-41EE-B56D-05736F0B56F5}"
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.33711.374
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "kittyweather", "kittyweather\kittyweather.csproj", "{7345361F-B894-41EE-B56D-05736F0B56F5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -10,7 +13,15 @@ Global
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{7345361F-B894-41EE-B56D-05736F0B56F5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{7345361F-B894-41EE-B56D-05736F0B56F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7345361F-B894-41EE-B56D-05736F0B56F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7345361F-B894-41EE-B56D-05736F0B56F5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7345361F-B894-41EE-B56D-05736F0B56F5}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{7345361F-B894-41EE-B56D-05736F0B56F5}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{7345361F-B894-41EE-B56D-05736F0B56F5}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{7345361F-B894-41EE-B56D-05736F0B56F5}.Release|Any CPU.Deploy.0 = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2E69C9CD-CD46-41EF-B0E7-0D0CB1011D0C}
 	EndGlobalSection
 EndGlobal
