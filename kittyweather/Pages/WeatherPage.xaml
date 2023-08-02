@@ -65,6 +65,7 @@
                 
                 <Label Padding="10, 4, 0, 0"
                        Text="WEATHER ALERT:"
+                       FontAttributes="Bold"
                        HorizontalOptions="Start"
                        VerticalOptions="Start"
                        FontSize="15"/>
