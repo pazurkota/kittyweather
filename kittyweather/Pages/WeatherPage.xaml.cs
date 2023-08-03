@@ -16,7 +16,7 @@ public partial class WeatherPage : ContentPage {
         await GetDeviceLocation();
 
         try {
-            var weather = _apiService.GetWeather(latitude, longitude);
+            var weather = await _apiService.GetWeather(latitude, longitude);
             ShowWeatherAlert();
 
             CityName.Text = weather.Location.Name;
@@ -43,9 +43,9 @@ public partial class WeatherPage : ContentPage {
         longitude = location.Longitude;
     }
 
-    private void ShowWeatherAlert() {
-        var data = _apiService.GetWeather(latitude, longitude);
-        var alert = data.Alerts.WeatherAlerts.First();
+    private async void ShowWeatherAlert() {
+        var data = await _apiService.GetWeather(latitude, longitude);
+        var alert = data.Alerts.WeatherAlerts.FirstOrDefault();
 
         if (alert is not null) {
             WeatherAlertBox.IsVisible = true;
