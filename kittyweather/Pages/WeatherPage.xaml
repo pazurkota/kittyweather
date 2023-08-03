@@ -2,7 +2,9 @@
 
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodel="clr-namespace:kittyweather.ViewModel"
              x:Class="kittyweather.Pages.WeatherPage"
+             x:DataType="viewmodel:WeatherViewModel"
              BackgroundColor="LightBlue">
 
     <ContentPage.Resources>
@@ -38,17 +40,15 @@
             
             <!-- City name with temperature and weather condition -->
             <StackLayout Grid.Row="1" Orientation="Vertical">
-                <Label x:Name="CityName" 
-                    HorizontalOptions="Center"
+                <Label HorizontalOptions="Center"
                     FontSize="40"
                     TextColor="SlateGray"
-                    Text="Warsaw"/>
+                    Text="{Binding CityName}"/>
                 
-                <Label x:Name="WeatherDescription"
-                       HorizontalOptions="Center"
+                <Label HorizontalOptions="Center"
                        FontSize="20"
                        TextColor="SlateGray"
-                       Text="20°C, Cloudy"/>
+                       Text="{Binding WeatherDesc}"/>
             </StackLayout>
             
             <!-- Weather Image -->

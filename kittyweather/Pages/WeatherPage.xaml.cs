@@ -1,4 +1,5 @@
 ﻿using kittyweather.Data;
+using kittyweather.ViewModel;
 
 namespace kittyweather.Pages; 
 
@@ -7,8 +8,9 @@ public partial class WeatherPage : ContentPage {
     private double longitude;
     private readonly ApiService _apiService = new(); 
     
-    public WeatherPage() {
+    public WeatherPage(WeatherViewModel vm) {
         InitializeComponent();
+        BindingContext = vm;
     }
 
     protected override async void OnAppearing() {
@@ -19,8 +21,6 @@ public partial class WeatherPage : ContentPage {
             var weather = await _apiService.GetWeather(latitude, longitude);
             ShowWeatherAlert();
 
-            CityName.Text = weather.Location.Name;
-            WeatherDescription.Text = $"{weather.Current.TemperatureC}°C, {weather.Current.Condition.ConditionState}";
             HumidityLabel.Text = $"{weather.Current.Humidity}%";
             CloudCoverLabel.Text = $"{weather.Current.Cloud}%";
             AirPressureLabel.Text = $"{(int) weather.Current.PressureMb}";
