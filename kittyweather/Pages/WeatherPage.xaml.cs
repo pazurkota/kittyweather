@@ -14,9 +14,10 @@ public partial class WeatherPage : ContentPage {
 
     protected override async void OnAppearing() {
         base.OnAppearing();
+        await GetDeviceLocation();
 
         var viewModel = (WeatherViewModel) BindingContext;
-        await viewModel.GetWeatherData();
+        await viewModel.GetWeatherData(latitude, longitude);
 
         viewModel.GetUvIndexDescription();
     }
@@ -25,15 +26,5 @@ public partial class WeatherPage : ContentPage {
         var location = await Geolocation.GetLocationAsync();
         latitude = location.Latitude;
         longitude = location.Longitude;
-    }
-
-    private async void ShowWeatherAlert() {
-        var data = await ApiService.GetWeather(latitude, longitude);
-        var alert = data.Alerts.WeatherAlerts.FirstOrDefault();
-
-        if (alert is not null) {
-            WeatherAlertBox.IsVisible = true;
-            WeatherAlertDesc.Text = $"{alert.AlertHeadline}";
-        }
     }
 }

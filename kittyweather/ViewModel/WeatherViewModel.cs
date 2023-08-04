@@ -7,8 +7,8 @@ public partial class WeatherViewModel : ObservableObject {
     [ObservableProperty] private Weather weather;
     [ObservableProperty] private string uvIndexDesc;
 
-    public async Task GetWeatherData() {
-        Weather data = await ApiService.GetWeather(52.237049, 21.017532);
+    public async Task GetWeatherData(double latitude, double longitude) {
+        Weather data = await ApiService.GetWeather(latitude, longitude);
         Weather = data;
     }
 
