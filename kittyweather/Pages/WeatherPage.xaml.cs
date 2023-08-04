@@ -16,27 +16,6 @@ public partial class WeatherPage : ContentPage {
         base.OnAppearing();
         var viewModel = (WeatherViewModel) BindingContext;
         await viewModel.GetWeatherData();
-
-        // await GetDeviceLocation();
-
-        try {
-            var weather = await ApiService.GetWeather(latitude, longitude);
-            ShowWeatherAlert();
-
-            HumidityLabel.Text = $"{weather.Current.Humidity}%";
-            CloudCoverLabel.Text = $"{weather.Current.Cloud}%";
-            AirPressureLabel.Text = $"{(int) weather.Current.PressureMb}";
-            VisibiltyLabel.Text = $"{weather.Current.VisibilityKm}";
-            UVIndexLabel.Text = $"{(int) weather.Current.UvIndex}";
-            UVDescriptionLabel.Text = $"{ShowUvIndex(weather.Current.UvIndex)}";
-            PrecipitationLabel.Text = $"{weather.Current.PrecipitationMm}";
-        }
-        catch (UnauthorizedAccessException) {
-            await DisplayAlert("Error Occured", "API Key is not set! Go to settings and enter your API Key", "OK");
-        }
-        catch (Exception e) {
-            await DisplayAlert("Error Occured", e.Message, "OK");
-        }
     }
 
     private async Task GetDeviceLocation() {
