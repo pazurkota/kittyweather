@@ -213,7 +213,7 @@
                        x:Name="UVDescriptionLabel"
                        HorizontalOptions="Center"
                        VerticalOptions="EndAndExpand"
-                       Text=" "
+                       Text="{Binding UvIndexDesc}"
                        FontSize="20"/>
 
                 <!-- Precipitation -->

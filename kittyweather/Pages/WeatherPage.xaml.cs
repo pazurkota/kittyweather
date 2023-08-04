@@ -14,8 +14,11 @@ public partial class WeatherPage : ContentPage {
 
     protected override async void OnAppearing() {
         base.OnAppearing();
+
         var viewModel = (WeatherViewModel) BindingContext;
         await viewModel.GetWeatherData();
+
+        viewModel.GetUvIndexDescription();
     }
 
     private async Task GetDeviceLocation() {
@@ -32,22 +35,5 @@ public partial class WeatherPage : ContentPage {
             WeatherAlertBox.IsVisible = true;
             WeatherAlertDesc.Text = $"{alert.AlertHeadline}";
         }
-    }
-
-    private static string ShowUvIndex(decimal uvIndex)
-    {
-        if (uvIndex == 0)
-        {
-            return "No UV Index";
-        }
-
-        return uvIndex switch
-        {
-            < 3 => "Low",
-            < 6 => "Moderate",
-            < 8 => "High",
-            < 11 => "Very High",
-            _ => "Extreme"
-        };
     }
 }
