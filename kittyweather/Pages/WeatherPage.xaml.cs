@@ -6,19 +6,21 @@ namespace kittyweather.Pages;
 public partial class WeatherPage : ContentPage {
     private double latitude;
     private double longitude;
-    private readonly ApiService _apiService = new(); 
-    
-    public WeatherPage(WeatherViewModel vm) {
+
+    public WeatherPage() {
         InitializeComponent();
-        BindingContext = vm;
+        BindingContext = new WeatherViewModel();
     }
 
     protected override async void OnAppearing() {
         base.OnAppearing();
-        await GetDeviceLocation();
+        var viewModel = (WeatherViewModel) BindingContext;
+        await viewModel.GetWeatherData();
+
+        // await GetDeviceLocation();
 
         try {
-            var weather = await _apiService.GetWeather(latitude, longitude);
+            var weather = await ApiService.GetWeather(latitude, longitude);
             ShowWeatherAlert();
 
             HumidityLabel.Text = $"{weather.Current.Humidity}%";
@@ -44,7 +46,7 @@ public partial class WeatherPage : ContentPage {
     }
 
     private async void ShowWeatherAlert() {
-        var data = await _apiService.GetWeather(latitude, longitude);
+        var data = await ApiService.GetWeather(latitude, longitude);
         var alert = data.Alerts.WeatherAlerts.FirstOrDefault();
 
         if (alert is not null) {

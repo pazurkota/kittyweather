@@ -5,9 +5,9 @@ using System.Net;
 namespace kittyweather.Data;
 
 public class ApiService {
-    private readonly string BASEURL = "https://api.weatherapi.com/v1/";
+    private static string BASEURL = "https://api.weatherapi.com/v1/";
 
-    public async Task<Weather> GetWeather(string cityName) {
+    public static async Task<Weather> GetWeather(string cityName) {
         string apiKey = Preferences.Get("apiKey", null);
 
         if (string.IsNullOrEmpty(apiKey)) {
@@ -32,7 +32,7 @@ public class ApiService {
         return null;
     }
 
-    public async Task<Weather> GetWeather(double latitude, double longitude) {
+    public static async Task<Weather> GetWeather(double latitude, double longitude) {
         string apiKey = Preferences.Get("apiKey", null);
 
         if (string.IsNullOrEmpty(apiKey)) {

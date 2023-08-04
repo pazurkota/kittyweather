@@ -43,12 +43,18 @@
                 <Label HorizontalOptions="Center"
                     FontSize="40"
                     TextColor="SlateGray"
-                    Text="{Binding CityName}"/>
-                
+                    Text="{Binding Weather.Location.Name}"/>
+
                 <Label HorizontalOptions="Center"
                        FontSize="20"
-                       TextColor="SlateGray"
-                       Text="{Binding WeatherDesc}"/>
+                       TextColor="SlateGray">
+                    <Label.Text>
+                        <MultiBinding StringFormat="{}{0}°C, {1}">
+                            <Binding Path="Weather.Current.TemperatureC"/>
+                            <Binding Path="Weather.Current.Condition.ConditionState"/>
+                        </MultiBinding>
+                    </Label.Text>
+                </Label>
             </StackLayout>
             
             <!-- Weather Image -->
