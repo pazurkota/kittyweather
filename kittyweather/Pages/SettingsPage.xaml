@@ -8,8 +8,9 @@
         <Style x:Key="settingsPageText" TargetType="Label">
             <Setter Property="HorizontalTextAlignment" Value="Center"/>
             <Setter Property="VerticalTextAlignment" Value="Center"/>
-            <Setter Property="TextColor" Value="White"></Setter>
+            <Setter Property="TextColor" Value="White"/>
             <Setter Property="FontSize" Value="50"/>
+            <Setter Property="FontAttributes" Value="Bold"/>
         </Style>    
     </ContentPage.Resources>
     
