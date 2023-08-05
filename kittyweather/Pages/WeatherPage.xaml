@@ -59,7 +59,7 @@
             <!-- Weather Image -->
             <Image Grid.Row="2" 
                    x:Name="WeatherImage"
-                   Source="cloudy.svg"
+                   Source="{Binding Weather.Current.Condition.ConditionIcon, StringFormat='{}https:{0}'}"
                    VerticalOptions="Start"
                    WidthRequest="300"
                    HeightRequest="300"/>
@@ -98,7 +98,7 @@
                                    VerticalOptions="Start"
                                    HeightRequest="50"
                                    WidthRequest="50"
-                                   Source="cloudy.svg"/>
+                                   Source="{Binding Condition.ConditionIcon, StringFormat='{}https:{0}'}"/>
                             
                             <Label Grid.Row="1"
                                    FontSize="25"
