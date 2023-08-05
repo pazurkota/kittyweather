@@ -16,10 +16,18 @@ public partial class WeatherPage : ContentPage {
         base.OnAppearing();
         await GetDeviceLocation();
 
-        var viewModel = (WeatherViewModel) BindingContext;
-        await viewModel.GetWeatherData(latitude, longitude);
+        try {
+            var viewModel = (WeatherViewModel)BindingContext;
+            await viewModel.GetWeatherData(latitude, longitude);
 
-        viewModel.GetUvIndexDescription();
+            viewModel.GetUvIndexDescription();
+        }
+        catch (UnauthorizedAccessException) {
+            await DisplayAlert("Error", "Unable to download data: Please set the API Key in settings.", "OK");
+        }
+        catch (Exception) {
+            await DisplayAlert("Error", "Unable to download data: Please try again later.", "OK");
+        }   
     }
 
     private async Task GetDeviceLocation() {
