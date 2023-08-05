@@ -21,6 +21,7 @@ public partial class WeatherPage : ContentPage {
             await viewModel.GetWeatherData(latitude, longitude);
 
             viewModel.GetUvIndexDescription();
+            viewModel.GetHourlyWeather();
         }
         catch (UnauthorizedAccessException) {
             await DisplayAlert("Error", "Unable to download data: Please set the API Key in settings.", "OK");
