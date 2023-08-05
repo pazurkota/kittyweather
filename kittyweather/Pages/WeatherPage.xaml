@@ -4,7 +4,6 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:viewmodel="clr-namespace:kittyweather.ViewModel"
              x:Class="kittyweather.Pages.WeatherPage"
-             x:DataType="viewmodel:WeatherViewModel"
              BackgroundColor="LightBlue">
 
     <ContentPage.Resources>
@@ -85,7 +84,7 @@
             </Grid>
             
             <!-- Hourly weather -->
-            <CollectionView Grid.Row="4" x:Name="WeatherHourly" HeightRequest="100">
+            <CollectionView Grid.Row="4" x:Name="WeatherHourly" HeightRequest="100" Margin="10" ItemsSource="{Binding HourlyWeather}">
                 <CollectionView.ItemsLayout>
                     <LinearItemsLayout Orientation="Horizontal"
                                         ItemSpacing="10"/>
@@ -98,15 +97,18 @@
                                    HorizontalOptions="Center"
                                    VerticalOptions="Start"
                                    HeightRequest="50"
-                                   WidthRequest="50"/>
+                                   WidthRequest="50"
+                                   Source="cloudy.svg"/>
                             
                             <Label Grid.Row="1"
-                                   FontSize="30"
-                                   HorizontalOptions="Center"/>
+                                   FontSize="25"
+                                   HorizontalOptions="Center"
+                                   Text="{Binding TemperatureC, StringFormat='{}{0}°C'}"/>
                             
                             <Label Grid.Row="2"
                                    FontSize="15"
-                                   HorizontalOptions="Center"/>
+                                   HorizontalOptions="Center"
+                                   Text="{Binding Time}"/>
                         </Grid>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
