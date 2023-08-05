@@ -2,7 +2,9 @@
 
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodel="clr-namespace:kittyweather.ViewModel"
              x:Class="kittyweather.Pages.WeatherPage"
+             x:DataType="viewmodel:WeatherViewModel"
              BackgroundColor="LightBlue">
 
     <ContentPage.Resources>
@@ -38,17 +40,21 @@
             
             <!-- City name with temperature and weather condition -->
             <StackLayout Grid.Row="1" Orientation="Vertical">
-                <Label x:Name="CityName" 
-                    HorizontalOptions="Center"
+                <Label HorizontalOptions="Center"
                     FontSize="40"
                     TextColor="SlateGray"
-                    Text="Warsaw"/>
-                
-                <Label x:Name="WeatherDescription"
-                       HorizontalOptions="Center"
+                    Text="{Binding Weather.Location.Name}"/>
+
+                <Label HorizontalOptions="Center"
                        FontSize="20"
-                       TextColor="SlateGray"
-                       Text="20°C, Cloudy"/>
+                       TextColor="SlateGray">
+                    <Label.Text>
+                        <MultiBinding StringFormat="{}{0}°C, {1}">
+                            <Binding Path="Weather.Current.TemperatureC"/>
+                            <Binding Path="Weather.Current.Condition.ConditionState"/>
+                        </MultiBinding>
+                    </Label.Text>
+                </Label>
             </StackLayout>
             
             <!-- Weather Image -->
@@ -120,9 +126,8 @@
                        x:Name="HumidityLabel"
                        HorizontalOptions="Center"
                        VerticalOptions="Start"
-                       Text=" "
-                       FontSize="60"
-                       />
+                       Text="{Binding Weather.Current.Humidity, StringFormat='{}{0}%'}"
+                       FontSize="60"/>
 
                 <!-- Cloud cover -->
                 <BoxView Grid.Column="1" Style="{StaticResource BlackBoxViewBg}"/>
@@ -136,7 +141,7 @@
                        x:Name="CloudCoverLabel"
                        HorizontalOptions="Center"
                        VerticalOptions="Start"
-                       Text=" "
+                       Text="{Binding Weather.Current.Cloud, StringFormat='{}{0}%'}"
                        FontSize="60"
                 />
             </Grid>
@@ -155,7 +160,7 @@
                        x:Name="AirPressureLabel"
                        HorizontalOptions="Center"
                        VerticalOptions="Start"
-                       Text=" "
+                       Text="{Binding Weather.Current.PressureMb, StringFormat='{}{0:0.##}'}"
                        FontSize="60" />
 
                 <Label Grid.Column="0"
@@ -176,7 +181,7 @@
                        x:Name="VisibiltyLabel"
                        HorizontalOptions="Center"
                        VerticalOptions="Start"
-                       Text=" "
+                       Text="{Binding Weather.Current.VisibilityKm}"
                        FontSize="60"/>
 
                 <Label Grid.Column="1"
@@ -201,14 +206,14 @@
                        x:Name="UVIndexLabel"
                        HorizontalOptions="Center"
                        VerticalOptions="Start"
-                       Text=" "
+                       Text="{Binding Weather.Current.UvIndex}"
                        FontSize="60" />
 
                 <Label Grid.Column="0"
                        x:Name="UVDescriptionLabel"
                        HorizontalOptions="Center"
                        VerticalOptions="EndAndExpand"
-                       Text=" "
+                       Text="{Binding UvIndexDesc}"
                        FontSize="20"/>
 
                 <!-- Precipitation -->
@@ -223,7 +228,7 @@
                        x:Name="PrecipitationLabel"
                        HorizontalOptions="Center"
                        VerticalOptions="Start"
-                       Text=" "
+                       Text="{Binding Weather.Current.PrecipitationMm}"
                        FontSize="60"/>
 
                 <Label Grid.Column="1"

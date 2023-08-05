@@ -1,4 +1,6 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using kittyweather.Pages;
+using kittyweather.ViewModel;
+using Microsoft.Extensions.Logging;
 
 namespace kittyweather;
 
@@ -15,6 +17,9 @@ public static class MauiProgram {
 #if DEBUG
         builder.Logging.AddDebug();
 #endif
+
+        builder.Services.AddSingleton<WeatherPage>();
+        builder.Services.AddSingleton<WeatherViewModel>();
 
         return builder.Build();
     }
