@@ -26,16 +26,13 @@ public partial class WeatherViewModel : ObservableObject {
         UvIndexDesc = uvIndexDesc;
     }
     
-    // @TODO Fix linq expression
     public void GetHourlyWeather() {
-        var todayWeather = Weather.Forecast.ForecastDay[0].HourWeather;
-        var tommorowWeather = Weather.Forecast.ForecastDay[1].HourWeather;
-
-        var hourly = todayWeather.ToList();
-        hourly.AddRange(tommorowWeather);
-
-        // generate a linq expression that will sort the weather in the current timeframe and return 4 items
-        var sortedHourly = hourly.Where(hour => hour.DateTime >= DateTime.Now && hour.DateTime <= DateTime.Now.AddHours(5)).OrderBy(hour => hour.Time).ToList();
+        var hourly = Weather.Forecast.ForecastDay[0].HourWeather;
+        hourly.AddRange(Weather.Forecast.ForecastDay[1].HourWeather);
+        
+        var currentTime = Weather.Location.LocalTimeParsed;
+        
+        var sortedHourly = hourly.Where(hour => hour.DateTime >= currentTime && hour.DateTime <= currentTime.AddHours(5)).OrderBy(hour => hour.Time).ToList();
         
         HourlyWeather = sortedHourly;
     }
