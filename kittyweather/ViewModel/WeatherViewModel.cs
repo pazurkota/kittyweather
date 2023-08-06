@@ -5,6 +5,7 @@ namespace kittyweather.ViewModel;
 
 public partial class WeatherViewModel : ObservableObject {
     [ObservableProperty] private Weather weather;
+    [ObservableProperty] private List<Hour> hourlyWeather;
     [ObservableProperty] private string uvIndexDesc;
 
     public async Task GetWeatherData(double latitude, double longitude) {
@@ -23,5 +24,16 @@ public partial class WeatherViewModel : ObservableObject {
         };
 
         UvIndexDesc = uvIndexDesc;
+    }
+    
+    public void GetHourlyWeather() {
+        var hourly = Weather.Forecast.ForecastDay[0].HourWeather;
+        hourly.AddRange(Weather.Forecast.ForecastDay[1].HourWeather);
+        
+        var currentTime = Weather.Location.LocalTimeParsed;
+        
+        var sortedHourly = hourly.Where(hour => hour.DateTime >= currentTime && hour.DateTime <= currentTime.AddHours(5)).OrderBy(hour => hour.Time).ToList();
+        
+        HourlyWeather = sortedHourly;
     }
 }

@@ -4,7 +4,6 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:viewmodel="clr-namespace:kittyweather.ViewModel"
              x:Class="kittyweather.Pages.WeatherPage"
-             x:DataType="viewmodel:WeatherViewModel"
              BackgroundColor="LightBlue">
 
     <ContentPage.Resources>
@@ -60,7 +59,7 @@
             <!-- Weather Image -->
             <Image Grid.Row="2" 
                    x:Name="WeatherImage"
-                   Source="cloudy.svg"
+                   Source="{Binding Weather.Current.Condition.ConditionIcon, StringFormat='{}https:{0}'}"
                    VerticalOptions="Start"
                    WidthRequest="300"
                    HeightRequest="300"/>
@@ -85,32 +84,39 @@
             </Grid>
             
             <!-- Hourly weather -->
-            <CollectionView Grid.Row="4" x:Name="WeatherHourly" HeightRequest="100">
-                <CollectionView.ItemsLayout>
-                    <LinearItemsLayout Orientation="Horizontal"
-                                        ItemSpacing="10"/>
-                </CollectionView.ItemsLayout>
+            <Grid Grid.Row="4" Margin="20">
+                <BoxView Style="{StaticResource BlackBoxViewBg}"/>
                 
-                <CollectionView.ItemTemplate>
-                    <DataTemplate>
-                        <Grid Grid.Row="4" RowDefinitions="Auto, Auto, Auto">
-                            <Image Grid.Row="0"
-                                   HorizontalOptions="Center"
-                                   VerticalOptions="Start"
-                                   HeightRequest="50"
-                                   WidthRequest="50"/>
+                <CollectionView x:Name="WeatherHourly" HeightRequest="100" ItemsSource="{Binding HourlyWeather}" HorizontalOptions="Center">
+                    <CollectionView.ItemsLayout>
+                        <LinearItemsLayout Orientation="Horizontal"
+                                           ItemSpacing="10"/>
+                    </CollectionView.ItemsLayout>
+                
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Grid.Row="4" RowDefinitions="Auto, Auto, Auto" HorizontalOptions="Center">
+                                <Image Grid.Row="0"
+                                       HorizontalOptions="Center"
+                                       VerticalOptions="Start"
+                                       HeightRequest="50"
+                                       WidthRequest="50"
+                                       Source="{Binding Condition.ConditionIcon, StringFormat='{}https:{0}'}"/>
                             
-                            <Label Grid.Row="1"
-                                   FontSize="30"
-                                   HorizontalOptions="Center"/>
+                                <Label Grid.Row="1"
+                                       FontSize="20"
+                                       HorizontalOptions="Center"
+                                       Text="{Binding TemperatureC, StringFormat='{}{0}°C'}"/>
                             
-                            <Label Grid.Row="2"
-                                   FontSize="15"
-                                   HorizontalOptions="Center"/>
-                        </Grid>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
+                                <Label Grid.Row="2"
+                                       FontSize="15"
+                                       HorizontalOptions="Center"
+                                       Text="{Binding ParsedTime}"/>
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </Grid>
 
             <!-- Humidity and Cloud Cover -->
             <Grid Grid.Row="5" ColumnDefinitions="0.5*, 0.5*" Margin="20, 0" ColumnSpacing="20">
