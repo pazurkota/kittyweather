@@ -12,6 +12,7 @@ public class ForecastDay {
 
 public class Hour {
     [JsonProperty("time")] public string Time { get; set; }
+    public DateTime DateTime => DateTime.Parse(Time);
     public string ParsedTime => DateTime.Parse(Time).ToShortTimeString();
     [JsonProperty("temp_c")] public double TemperatureC { get; set; }
     [JsonProperty("temp_f")] public double TemperatureF { get; set; }
