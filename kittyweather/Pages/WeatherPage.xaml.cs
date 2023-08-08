@@ -22,6 +22,16 @@ public partial class WeatherPage : ContentPage {
 
             viewModel.GetUvIndexDescription();
             viewModel.GetHourlyWeather();
+            
+            var alert = viewModel.Weather.Alerts.WeatherAlerts.FirstOrDefault();
+
+            if (alert != null) {
+                WeatherAlertBox.IsVisible = true;
+                WeatherAlertDesc.Text = alert.AlertHeadline;
+            }
+            else {
+                WeatherAlertBox.IsVisible = false;
+            }
         }
         catch (UnauthorizedAccessException) {
             await DisplayAlert("Error", "Unable to download data: Please set the API Key in settings.", "OK");
