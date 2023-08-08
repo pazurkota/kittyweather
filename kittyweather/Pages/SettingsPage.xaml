@@ -14,42 +14,20 @@
         </Style>    
     </ContentPage.Resources>
     
-    <Grid RowDefinitions="70, 40, 60, Auto">
+    <ScrollView>
+        <Grid RowDefinitions="70, Auto">
+            <Grid Grid.Row="0">
+                <BoxView Grid.Row="0" Color="{DynamicResource Primary}" VerticalOptions="Start"/>
+                <Label Text="Settings" Style="{StaticResource settingsPageText}"/>
+            </Grid>
             
-        <BoxView
-            Grid.Row="0"
-            Grid.Column="0"
-            Color="{DynamicResource Primary}"
-            />
-        <Label 
-            Grid.Row="0"
-            Grid.Column="0"
-            Text="Settings"
-            Style="{StaticResource settingsPageText}"
-            />
-        
-        <!-- API Key setting -->
-        <Label 
-            Grid.Row="1"
-            Grid.Column="0"
-            Text="API Key"
-            HorizontalTextAlignment="Center"
-            VerticalTextAlignment="Center"
-            FontSize="30"
-            />
-        <Entry
-            Grid.Row="2"
-            Grid.Column="0"
-            Placeholder="Enter API Key"
-            Completed="OnEntryCompleted"
-            />
-        <Label 
-            x:Name="apiKeyLabel"
-            Grid.Row="3"
-            Grid.Column="0"
-            Text="API Key: not found!"
-            FontSize="20"
-            HorizontalTextAlignment="Center"
-            />
-    </Grid>
+            <Entry Grid.Row="1"
+                   Margin="20, 10"
+                   Placeholder="API Key"
+                   HorizontalTextAlignment="Center"
+                   IsPassword="True"
+                   Completed="OnEntryCompleted"
+                />
+        </Grid>
+    </ScrollView>
 </ContentPage>
