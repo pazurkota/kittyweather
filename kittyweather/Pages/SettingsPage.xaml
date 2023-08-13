@@ -15,7 +15,7 @@
     </ContentPage.Resources>
     
     <ScrollView>
-        <Grid RowDefinitions="70, Auto, Auto">
+        <Grid RowDefinitions="70, Auto, Auto, Auto">
             <Grid Grid.Row="0">
                 <BoxView Grid.Row="0" Color="{DynamicResource Primary}" VerticalOptions="Start"/>
                 <Label Text="Settings" Style="{StaticResource settingsPageText}"/>
@@ -36,6 +36,13 @@
                 <Button Grid.Column="1"
                         Text="Copy API Key"/>
             </Grid>
+            
+            <Label Grid.Row="3"
+                   Margin="20"
+                   Text="api key"
+                   FontSize="20"
+                   HorizontalTextAlignment="Center"
+                   />
         </Grid>
     </ScrollView>
 </ContentPage>
