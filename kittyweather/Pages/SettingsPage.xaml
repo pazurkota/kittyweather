@@ -15,7 +15,7 @@
     </ContentPage.Resources>
     
     <ScrollView>
-        <Grid RowDefinitions="70, Auto">
+        <Grid RowDefinitions="70, Auto, Auto">
             <Grid Grid.Row="0">
                 <BoxView Grid.Row="0" Color="{DynamicResource Primary}" VerticalOptions="Start"/>
                 <Label Text="Settings" Style="{StaticResource settingsPageText}"/>
@@ -28,6 +28,14 @@
                    IsPassword="True"
                    Completed="OnEntryCompleted"
                 />
+            
+            <Grid Grid.Row="2" ColumnDefinitions="*, *" Margin="20, 0" ColumnSpacing="20">
+                <Button Grid.Column="0"
+                    Text="Reveal API Key"/>
+                
+                <Button Grid.Column="1"
+                        Text="Copy API Key"/>
+            </Grid>
         </Grid>
     </ScrollView>
 </ContentPage>
