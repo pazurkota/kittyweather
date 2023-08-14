@@ -15,7 +15,7 @@
     </ContentPage.Resources>
     
     <ScrollView>
-        <Grid RowDefinitions="70, Auto, Auto, Auto">
+        <Grid RowDefinitions="70, Auto, Auto, Auto, Auto">
             <Grid Grid.Row="0">
                 <BoxView Grid.Row="0" Color="{DynamicResource Primary}" VerticalOptions="Start"/>
                 <Label Text="Settings" Style="{StaticResource settingsPageText}"/>
@@ -47,6 +47,66 @@
                    FontSize="20"
                    HorizontalTextAlignment="Center"
                    />
+            
+            <Grid Grid.Row="3" ColumnDefinitions="*, *" Margin="20" ColumnSpacing="20">
+                <Label Grid.Column="0"
+                       Text="Temperature unit:"
+                       FontSize="20"
+                       HorizontalTextAlignment="Center"/>
+                
+                <Picker Grid.Column="0" Title="Choose Option" HorizontalTextAlignment="Center" VerticalOptions="EndAndExpand" Margin="0, 30">
+                    <Picker.ItemsSource>
+                        <x:Array Type="{x:Type x:String}">
+                            <x:String>Celsius</x:String>
+                            <x:String>Fahrenheit</x:String>
+                        </x:Array>
+                    </Picker.ItemsSource>
+                </Picker>
+                
+                <Label Grid.Column="1"
+                       Text="Visibility unit:"
+                       FontSize="20"
+                       HorizontalTextAlignment="Center"/>
+                
+                <Picker Grid.Column="1" Title="Choose Option" HorizontalTextAlignment="Center" VerticalOptions="EndAndExpand" Margin="0, 30">
+                    <Picker.ItemsSource>
+                        <x:Array Type="{x:Type x:String}">
+                            <x:String>Kilometers</x:String>
+                            <x:String>Miles</x:String>
+                        </x:Array>
+                    </Picker.ItemsSource>
+                </Picker>
+            </Grid>
+            
+            <Grid Grid.Row="4" ColumnDefinitions="*, *" Margin="20" ColumnSpacing="20">
+                <Label Grid.Column="0"
+                       Text="Air Pressure unit:"
+                       FontSize="20"
+                       HorizontalTextAlignment="Center"/>
+                
+                <Picker Grid.Column="0" Title="Choose Option" HorizontalTextAlignment="Center" VerticalOptions="EndAndExpand" Margin="0, 30">
+                    <Picker.ItemsSource>
+                        <x:Array Type="{x:Type x:String}">
+                            <x:String>mbar</x:String>
+                            <x:String>Inches</x:String>
+                        </x:Array>
+                    </Picker.ItemsSource>
+                </Picker>
+                
+                <Label Grid.Column="1"
+                       Text="Precipitation unit:"
+                       FontSize="20"
+                       HorizontalTextAlignment="Center"/>
+                
+                <Picker Grid.Column="1" Title="Choose Option" HorizontalTextAlignment="Center" VerticalOptions="EndAndExpand" Margin="0, 30">
+                    <Picker.ItemsSource>
+                        <x:Array Type="{x:Type x:String}">
+                            <x:String>Milimeters</x:String>
+                            <x:String>Inches</x:String>
+                        </x:Array>
+                    </Picker.ItemsSource>
+                </Picker>
+            </Grid>
         </Grid>
     </ScrollView>
 </ContentPage>
