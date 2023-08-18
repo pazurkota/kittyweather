@@ -28,6 +28,12 @@ public partial class WeatherViewModel : ObservableObject
         Weather = data;
     }
 
+    public async Task GetWeatherData(string city)
+    {
+        Weather data = await ApiService.GetWeather(city);
+        Weather = data;
+    }
+
     public void GetUvIndexDescription() {
         string uvIndexDesc = Weather.Current.UvIndex switch
         {
