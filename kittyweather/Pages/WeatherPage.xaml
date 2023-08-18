@@ -29,6 +29,7 @@
                    HorizontalTextAlignment="Center"
                    PlaceholderColor="Black"
                    HorizontalOptions="FillAndExpand"
+                   Completed="SearchCity"
                    Margin="20"/>
 
             
