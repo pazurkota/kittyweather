@@ -2,7 +2,23 @@
 
 A free, open-source, cat-themed and multiplatform weather app written with .NET MAUI
 
+## Features
+
+- Shows temperature with current weather state
+- Shows weather for the next 5 hours
+- Shows weather icons (subject to change)
+- Shows the following information:
+  - Humidity
+  - Cloud cover
+  - Air pressure
+  - Visibility
+  - UV Index (with description)
+  - Precipitation
+- Shows weather alert for local area
+- Changeable weather units!
+
 ## Deployment
+
 ### Preqrequisites:
 - [.NET 7 SDK](https://dotnet.microsoft.com/download/dotnet/7.0)
 - Visual Studio 2022 (or newer) or any other IDE with .NET MAUI workload
@@ -26,6 +42,7 @@ A free, open-source, cat-themed and multiplatform weather app written with .NET 
 If you still have problems with deploy, please check the [official documentation](https://learn.microsoft.com/en-us/dotnet/maui/deployment/)
 
 ## Acknowledgements
+
 - Tab bar icons and search icon are from [Google Material Design](https://material.io/resources/icons/?style=baseline)
 - The cloud icon at weather section is from [Weather Icons](https://erikflowers.github.io/weather-icons/)
 
@@ -33,4 +50,4 @@ If you still have problems with deploy, please check the [official documentation
 Pull requests are always welcome! For major changes, please open an issue first to discuss what you would like to change.
 
 ## License
-This project is under GNU GPLv3 license. See the [LICENSE](LICENSE) file for more info.
+This project is under GNU GPLv3 license. See the [LICENSE](LICENSE) file for more info
