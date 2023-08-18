@@ -1,11 +1,26 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using kittyweather.Data;
 
-namespace kittyweather.ViewModel; 
+namespace kittyweather.ViewModel;
 
-public partial class WeatherViewModel : ObservableObject {
+public partial class WeatherViewModel : ObservableObject
+{
+    private readonly SettingsViewModel _settingsViewModel = new();
+
     [ObservableProperty] private Weather weather;
     [ObservableProperty] private List<Hour> hourlyWeather;
+
+    [ObservableProperty] private string temperature;
+
+    [ObservableProperty] private string visibility;
+    [ObservableProperty] private string visibilityDesc;
+
+    [ObservableProperty] private string airPressure;
+    [ObservableProperty] private string airPressureDesc;
+
+    [ObservableProperty] private string precipitation;
+    [ObservableProperty] private string precipitationDesc;
+
     [ObservableProperty] private string uvIndexDesc;
 
     public async Task GetWeatherData(double latitude, double longitude) {
@@ -36,4 +51,65 @@ public partial class WeatherViewModel : ObservableObject {
         
         HourlyWeather = sortedHourly;
     }
+    
+    public void GetTemperature() {
+        var unit = _settingsViewModel.SelectedTemperatureUnit;
+
+        switch (unit) {
+            case "Celsius":
+                Temperature = $"{Weather.Current.TemperatureC}°C, {Weather.Current.Condition.ConditionState}";
+                break;
+            case "Fahrenheit":
+                Temperature = $"{Weather.Current.TemperatureF}°F, {Weather.Current.Condition.ConditionState}";
+                break;
+        }
+    }
+
+    public void GetVisibility() {
+        var unit = _settingsViewModel.SelectedVisibilityUnit;
+
+        switch (unit) {
+            case "Kilometers":
+                Visibility = $"{Weather.Current.VisibilityKm}";
+                VisibilityDesc = "km";
+                break;
+            case "Miles":
+                Visibility = $"{Weather.Current.VisibilityMiles}";
+                VisibilityDesc = "miles";
+                break;
+        }
+    }
+
+    public void GetAirPressure() {
+        var unit = _settingsViewModel.SelectedAirPressureUnit;
+
+        switch (unit)
+        {
+            case "Millibars":
+                AirPressure = $"{Weather.Current.PressureMb}";
+                AirPressureDesc = "mbar";
+                break;
+            case "Inches":
+                AirPressure = $"{Weather.Current.PressureIn}";
+                AirPressureDesc = "inches";
+                break;
+        }
+    }
+
+    public void GetPrecipitation()
+    {
+        var unit = _settingsViewModel.SelectedPrecipitationUnit;
+
+        switch (unit)
+        {
+            case "Millimeters":
+                Precipitation = $"{Weather.Current.PrecipitationMm}";
+                PrecipitationDesc = "mm";
+                break;
+            case "Inches":
+                Precipitation = $"{Weather.Current.PrecipitationIn}";
+                PrecipitationDesc = "inches";
+                break;
+        }
+    }   
 }

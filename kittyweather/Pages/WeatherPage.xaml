@@ -46,13 +46,8 @@
 
                 <Label HorizontalOptions="Center"
                        FontSize="20"
-                       TextColor="SlateGray">
-                    <Label.Text>
-                        <MultiBinding StringFormat="{}{0}°C, {1}">
-                            <Binding Path="Weather.Current.TemperatureC"/>
-                            <Binding Path="Weather.Current.Condition.ConditionState"/>
-                        </MultiBinding>
-                    </Label.Text>
+                       TextColor="SlateGray"
+                       Text="{Binding Path=Temperature}">
                 </Label>
             </StackLayout>
             
@@ -166,13 +161,13 @@
                        x:Name="AirPressureLabel"
                        HorizontalOptions="Center"
                        VerticalOptions="Start"
-                       Text="{Binding Weather.Current.PressureMb, StringFormat='{}{0:0.##}'}"
+                       Text="{Binding AirPressure, StringFormat='{}{0:0.##}'}"
                        FontSize="60" />
 
                 <Label Grid.Column="0"
                        HorizontalOptions="Center"
                        VerticalOptions="EndAndExpand"
-                       Text="mbar"
+                       Text="{Binding AirPressureDesc}"
                        FontSize="20"/>
 
                 <!-- Visibility -->
@@ -187,13 +182,13 @@
                        x:Name="VisibiltyLabel"
                        HorizontalOptions="Center"
                        VerticalOptions="Start"
-                       Text="{Binding Weather.Current.VisibilityKm}"
+                       Text="{Binding Visibility}"
                        FontSize="60"/>
 
                 <Label Grid.Column="1"
                        HorizontalOptions="Center"
                        VerticalOptions="EndAndExpand"
-                       Text="km"
+                       Text="{Binding VisibilityDesc}"
                        FontSize="20"/>
             </Grid>
 
@@ -234,13 +229,13 @@
                        x:Name="PrecipitationLabel"
                        HorizontalOptions="Center"
                        VerticalOptions="Start"
-                       Text="{Binding Weather.Current.PrecipitationMm}"
+                       Text="{Binding Precipitation}"
                        FontSize="60"/>
 
                 <Label Grid.Column="1"
                        HorizontalOptions="Center"
                        VerticalOptions="EndAndExpand"
-                       Text="mm"
+                       Text="{Binding PrecipitationDesc}"
                        FontSize="20"/>
             </Grid>
         </Grid>

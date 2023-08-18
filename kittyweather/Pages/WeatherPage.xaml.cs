@@ -22,6 +22,11 @@ public partial class WeatherPage : ContentPage {
 
             viewModel.GetUvIndexDescription();
             viewModel.GetHourlyWeather();
+
+            viewModel.GetTemperature();
+            viewModel.GetVisibility();
+            viewModel.GetAirPressure();
+            viewModel.GetPrecipitation();
             
             var alert = viewModel.Weather.Alerts.WeatherAlerts.FirstOrDefault();
 
