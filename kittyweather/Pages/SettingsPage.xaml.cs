@@ -35,4 +35,20 @@ public partial class SettingsPage : ContentPage {
             await DisplayAlert("Error", "Cannot copy API Key: key is not set!", "OK");
         }
     }
+
+    private void TemperatureUnitChanged(object sender, EventArgs e) {
+        Preferences.Set("temperatureUnit", $"{((Picker)sender).SelectedItem}");
+    }
+
+    private void VisibilityUnitChanged(object sender, EventArgs e) {
+        Preferences.Set("visibilityUnit", $"{((Picker)sender).SelectedItem}");
+    }
+
+    private void AirPressureUnitChanged(object sender, EventArgs e) {
+        Preferences.Set("airPressureUnit", $"{((Picker)sender).SelectedItem}");
+    }
+    
+    private void PrecipitationUnitChanged(object sender, EventArgs e) {
+        Preferences.Set("precipitationUnit", $"{((Picker)sender).SelectedItem}");
+    }
 }

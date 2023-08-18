@@ -64,6 +64,7 @@
                         Title="Choose Option" 
                         ItemsSource="{Binding TemperatureOptions}"
                         SelectedItem="{Binding SelectedTemperatureUnit}"
+                        SelectedIndexChanged="TemperatureUnitChanged"
                         HorizontalTextAlignment="Center" 
                         VerticalOptions="EndAndExpand" 
                         Margin="0, 30"/>
@@ -77,6 +78,7 @@
                         Title="Choose Option" 
                         ItemsSource="{Binding VisibilityOptions}"
                         SelectedItem="{Binding SelectedVisibilityUnit}"
+                        SelectedIndexChanged="VisibilityUnitChanged"
                         HorizontalTextAlignment="Center" 
                         VerticalOptions="EndAndExpand" 
                         Margin="0, 30"/>
@@ -93,6 +95,7 @@
                         Title="Choose Option" 
                         ItemsSource="{Binding AirPressureOptions}"
                         SelectedItem="{Binding SelectedAirPressureUnit}"
+                        SelectedIndexChanged="AirPressureUnitChanged"
                         HorizontalTextAlignment="Center" 
                         VerticalOptions="EndAndExpand" 
                         Margin="0, 30"/>
@@ -106,6 +109,7 @@
                         Title="Choose Option" 
                         ItemsSource="{Binding PrecipitationOptions}"
                         SelectedItem="{Binding SelectedPrecipitationUnit}"
+                        SelectedIndexChanged="PrecipitationUnitChanged"
                         HorizontalTextAlignment="Center" 
                         VerticalOptions="EndAndExpand" 
                         Margin="0, 30"/>

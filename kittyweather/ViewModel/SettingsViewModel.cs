@@ -8,6 +8,13 @@ public partial class SettingsViewModel : ObservableObject {
     [ObservableProperty] private string selectedAirPressureUnit;
     [ObservableProperty] private string selectedPrecipitationUnit;
 
+    public SettingsViewModel() {
+        SelectedTemperatureUnit = Preferences.Get("temperatureUnit", "Celsius");
+        SelectedVisibilityUnit = Preferences.Get("visibilityUnit", "Kilometers");
+        SelectedAirPressureUnit = Preferences.Get("airPressureUnit", "Millibars");
+        SelectedPrecipitationUnit = Preferences.Get("precipitationUnit", "Millimeters");
+    }
+
     public List<string> TemperatureOptions { get; } = new() {
         "Celsius",
         "Fahrenheit"
