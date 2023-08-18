@@ -56,4 +56,21 @@ public class ApiService {
 
         return null;
     }
+
+    public static async Task<bool> CheckApiKey(string apiKey) {
+        var options = new RestClientOptions(BASEURL) {
+            ThrowOnAnyError = true
+        };
+
+        var client = new RestClient(options);
+        var request = new RestRequest($"current.json?key={apiKey}&q=London&aqi=no");
+
+        var response = await client.ExecuteAsync(request);
+
+        if (response.StatusCode == HttpStatusCode.OK) {
+            return true;
+        }
+
+        return false;
+    }
 }

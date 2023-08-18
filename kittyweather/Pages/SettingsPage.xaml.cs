@@ -1,4 +1,4 @@
-﻿using System.Diagnostics;
+﻿using kittyweather.Data;
 
 namespace kittyweather.Pages; 
 
@@ -12,16 +12,15 @@ public partial class SettingsPage : ContentPage {
         Preferences.Set("apiKey", $"{((Entry)sender).Text}");
     }
 
-    private async void RevealApiKey(object sender, EventArgs e) {
+    private async void CheckApiKey(object sender, EventArgs e) {
         var apiKey = Preferences.Get("apiKey", null);
+        var test = await ApiService.CheckApiKey(apiKey);
 
-        if (apiKey != null) {
-            ApiKeyLabel.Text = apiKey;
-            ApiKeyLabel.IsVisible = true;
+        if (test) {
+            await DisplayAlert("Info", "API Key status: valid!", "OK");
         }
         else {
-            await DisplayAlert("Error", "Cannot reveal API Key: key is not set!", "OK");
-            ApiKeyLabel.IsVisible = false;
+            await DisplayAlert("Info", "API Key status: invalid!", "OK");
         }
     }
 

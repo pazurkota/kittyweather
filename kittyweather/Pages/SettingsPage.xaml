@@ -36,22 +36,13 @@
             
             <Grid Grid.Row="2" ColumnDefinitions="*, *" Margin="20, 0" ColumnSpacing="20">
                 <Button Grid.Column="0"
-                    Text="Reveal API Key"
-                    Clicked="RevealApiKey"/>
+                    Text="Check API Key"
+                    Clicked="CheckApiKey"/>
                 
                 <Button Grid.Column="1"
                         Text="Copy API Key"
                         Clicked="CopyApiKey"/>
             </Grid>
-            
-            <Label Grid.Row="3"
-                   x:Name="ApiKeyLabel"
-                   IsVisible="False"
-                   Margin="20"
-                   Text="api key"
-                   FontSize="20"
-                   HorizontalTextAlignment="Center"
-                   />
             
             <!-- Temperature and visibility settings -->
             <Grid Grid.Row="3" ColumnDefinitions="*, *" Margin="20" ColumnSpacing="20">
