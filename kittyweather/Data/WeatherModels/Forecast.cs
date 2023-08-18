@@ -16,5 +16,7 @@ public class Hour {
     public string ParsedTime => DateTime.Parse(Time).ToShortTimeString();
     [JsonProperty("temp_c")] public double TemperatureC { get; set; }
     [JsonProperty("temp_f")] public double TemperatureF { get; set; }
+
+    public string Temperature { get; set; }
     [JsonProperty("condition")] public Condition Condition { get; set; }
 }

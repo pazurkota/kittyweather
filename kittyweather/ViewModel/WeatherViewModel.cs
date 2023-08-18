@@ -42,13 +42,26 @@ public partial class WeatherViewModel : ObservableObject
     }
     
     public void GetHourlyWeather() {
+        var unit = _settingsViewModel.SelectedTemperatureUnit;
+
         var hourly = Weather.Forecast.ForecastDay[0].HourWeather;
         hourly.AddRange(Weather.Forecast.ForecastDay[1].HourWeather);
         
         var currentTime = Weather.Location.LocalTimeParsed;
         
         var sortedHourly = hourly.Where(hour => hour.DateTime >= currentTime && hour.DateTime <= currentTime.AddHours(5)).OrderBy(hour => hour.Time).ToList();
-        
+
+        foreach (var hour in sortedHourly) {
+            switch (unit) {
+                case "Celsius":
+                    hour.Temperature = $"{hour.TemperatureC}°C";
+                    break;
+                case "Fahrenheit":
+                    hour.Temperature = $"{hour.TemperatureF}°F";
+                    break;
+            }
+        }
+
         HourlyWeather = sortedHourly;
     }
     

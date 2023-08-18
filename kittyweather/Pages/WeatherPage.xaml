@@ -101,7 +101,7 @@
                                 <Label Grid.Row="1"
                                        FontSize="20"
                                        HorizontalOptions="Center"
-                                       Text="{Binding TemperatureC, StringFormat='{}{0}°C'}"/>
+                                       Text="{Binding Temperature}"/>
                             
                                 <Label Grid.Row="2"
                                        FontSize="15"
