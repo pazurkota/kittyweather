@@ -25,17 +25,13 @@
     <ScrollView>
         <Grid RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto" RowSpacing="20">
             <!-- Search bar -->
-            <StackLayout Grid.Row="0" Margin="20, 20, 20, 0" Orientation="Horizontal" Spacing="20">
-                <Entry Placeholder="Search a city:"
-                       PlaceholderColor="Black"
-                       HorizontalOptions="FillAndExpand"/>
-                
-                <Button ImageSource="search.svg" 
-                        BackgroundColor="Transparent" 
-                        HorizontalOptions="End"
-                        WidthRequest="30"
-                        HeightRequest="30"/>
-            </StackLayout>
+
+            <Entry Placeholder="Search a city"
+                   HorizontalTextAlignment="Center"
+                   PlaceholderColor="Black"
+                   HorizontalOptions="FillAndExpand"
+                   Margin="20"/>
+
             
             <!-- City name with temperature and weather condition -->
             <StackLayout Grid.Row="1" Orientation="Vertical">
