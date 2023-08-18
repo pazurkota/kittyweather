@@ -25,7 +25,6 @@
     <ScrollView>
         <Grid RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto" RowSpacing="20">
             <!-- Search bar -->
-
             <Entry Placeholder="Search a city"
                    HorizontalTextAlignment="Center"
                    PlaceholderColor="Black"
