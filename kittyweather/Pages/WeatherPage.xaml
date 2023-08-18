@@ -90,7 +90,7 @@
                 
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
-                            <Grid Grid.Row="4" RowDefinitions="Auto, Auto, Auto" HorizontalOptions="Center">
+                            <Grid RowDefinitions="Auto, Auto, Auto" HorizontalOptions="Center">
                                 <Image Grid.Row="0"
                                        HorizontalOptions="Center"
                                        VerticalOptions="Start"
@@ -124,7 +124,6 @@
 
                 <Label Grid.Column="0"
                        Padding="0, 30, 0, 0"
-                       x:Name="HumidityLabel"
                        HorizontalOptions="Center"
                        VerticalOptions="Start"
                        Text="{Binding Weather.Current.Humidity, StringFormat='{}{0}%'}"
@@ -139,7 +138,6 @@
 
                 <Label Grid.Column="1"
                        Padding="0, 25, 0, 0"
-                       x:Name="CloudCoverLabel"
                        HorizontalOptions="Center"
                        VerticalOptions="Start"
                        Text="{Binding Weather.Current.Cloud, StringFormat='{}{0}%'}"
@@ -158,7 +156,6 @@
 
                 <Label Grid.Column="0"
                        Padding="0, 25, 0, 10"
-                       x:Name="AirPressureLabel"
                        HorizontalOptions="Center"
                        VerticalOptions="Start"
                        Text="{Binding AirPressure, StringFormat='{}{0:0.##}'}"
@@ -179,7 +176,6 @@
 
                 <Label Grid.Column="1"
                        Padding="0, 25, 0, 10"
-                       x:Name="VisibiltyLabel"
                        HorizontalOptions="Center"
                        VerticalOptions="Start"
                        Text="{Binding Visibility}"
@@ -204,14 +200,12 @@
 
                 <Label Grid.Column="0"
                        Padding="0, 25, 0, 10"
-                       x:Name="UVIndexLabel"
                        HorizontalOptions="Center"
                        VerticalOptions="Start"
                        Text="{Binding Weather.Current.UvIndex}"
                        FontSize="60" />
 
                 <Label Grid.Column="0"
-                       x:Name="UVDescriptionLabel"
                        HorizontalOptions="Center"
                        VerticalOptions="EndAndExpand"
                        Text="{Binding UvIndexDesc}"
@@ -226,7 +220,6 @@
 
                 <Label Grid.Column="1"
                        Padding="0, 25, 0, 10"
-                       x:Name="PrecipitationLabel"
                        HorizontalOptions="Center"
                        VerticalOptions="Start"
                        Text="{Binding Precipitation}"
