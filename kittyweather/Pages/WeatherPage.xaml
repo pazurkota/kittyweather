@@ -2,6 +2,7 @@
 
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodel="clr-namespace:kittyweather.ViewModel"
              x:Class="kittyweather.Pages.WeatherPage"
              BackgroundColor="LightBlue">
 
@@ -38,23 +39,22 @@
             
             <!-- City name with temperature and weather condition -->
             <StackLayout Grid.Row="1" Orientation="Vertical">
-                <Label x:Name="CityName" 
-                    HorizontalOptions="Center"
+                <Label HorizontalOptions="Center"
                     FontSize="40"
                     TextColor="SlateGray"
-                    Text="Warsaw"/>
-                
-                <Label x:Name="WeatherDescription"
-                       HorizontalOptions="Center"
+                    Text="{Binding Weather.Location.Name}"/>
+
+                <Label HorizontalOptions="Center"
                        FontSize="20"
                        TextColor="SlateGray"
-                       Text="20°C, Cloudy"/>
+                       Text="{Binding Path=Temperature}">
+                </Label>
             </StackLayout>
             
             <!-- Weather Image -->
             <Image Grid.Row="2" 
                    x:Name="WeatherImage"
-                   Source="cloudy.svg"
+                   Source="{Binding Weather.Current.Condition.ConditionIcon, StringFormat='{}https:{0}'}"
                    VerticalOptions="Start"
                    WidthRequest="300"
                    HeightRequest="300"/>
@@ -79,32 +79,39 @@
             </Grid>
             
             <!-- Hourly weather -->
-            <CollectionView Grid.Row="4" x:Name="WeatherHourly" HeightRequest="100">
-                <CollectionView.ItemsLayout>
-                    <LinearItemsLayout Orientation="Horizontal"
-                                        ItemSpacing="10"/>
-                </CollectionView.ItemsLayout>
+            <Grid Grid.Row="4" Margin="20">
+                <BoxView Style="{StaticResource BlackBoxViewBg}"/>
                 
-                <CollectionView.ItemTemplate>
-                    <DataTemplate>
-                        <Grid Grid.Row="4" RowDefinitions="Auto, Auto, Auto">
-                            <Image Grid.Row="0"
-                                   HorizontalOptions="Center"
-                                   VerticalOptions="Start"
-                                   HeightRequest="50"
-                                   WidthRequest="50"/>
+                <CollectionView x:Name="WeatherHourly" HeightRequest="100" ItemsSource="{Binding HourlyWeather}" HorizontalOptions="Center">
+                    <CollectionView.ItemsLayout>
+                        <LinearItemsLayout Orientation="Horizontal"
+                                           ItemSpacing="10"/>
+                    </CollectionView.ItemsLayout>
+                
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid RowDefinitions="Auto, Auto, Auto" HorizontalOptions="Center">
+                                <Image Grid.Row="0"
+                                       HorizontalOptions="Center"
+                                       VerticalOptions="Start"
+                                       HeightRequest="50"
+                                       WidthRequest="50"
+                                       Source="{Binding Condition.ConditionIcon, StringFormat='{}https:{0}'}"/>
                             
-                            <Label Grid.Row="1"
-                                   FontSize="30"
-                                   HorizontalOptions="Center"/>
+                                <Label Grid.Row="1"
+                                       FontSize="20"
+                                       HorizontalOptions="Center"
+                                       Text="{Binding Temperature}"/>
                             
-                            <Label Grid.Row="2"
-                                   FontSize="15"
-                                   HorizontalOptions="Center"/>
-                        </Grid>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
+                                <Label Grid.Row="2"
+                                       FontSize="15"
+                                       HorizontalOptions="Center"
+                                       Text="{Binding ParsedTime}"/>
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </Grid>
 
             <!-- Humidity and Cloud Cover -->
             <Grid Grid.Row="5" ColumnDefinitions="0.5*, 0.5*" Margin="20, 0" ColumnSpacing="20">
@@ -117,12 +124,10 @@
 
                 <Label Grid.Column="0"
                        Padding="0, 30, 0, 0"
-                       x:Name="HumidityLabel"
                        HorizontalOptions="Center"
                        VerticalOptions="Start"
-                       Text=" "
-                       FontSize="60"
-                       />
+                       Text="{Binding Weather.Current.Humidity, StringFormat='{}{0}%'}"
+                       FontSize="60"/>
 
                 <!-- Cloud cover -->
                 <BoxView Grid.Column="1" Style="{StaticResource BlackBoxViewBg}"/>
@@ -133,10 +138,9 @@
 
                 <Label Grid.Column="1"
                        Padding="0, 25, 0, 0"
-                       x:Name="CloudCoverLabel"
                        HorizontalOptions="Center"
                        VerticalOptions="Start"
-                       Text=" "
+                       Text="{Binding Weather.Current.Cloud, StringFormat='{}{0}%'}"
                        FontSize="60"
                 />
             </Grid>
@@ -152,16 +156,15 @@
 
                 <Label Grid.Column="0"
                        Padding="0, 25, 0, 10"
-                       x:Name="AirPressureLabel"
                        HorizontalOptions="Center"
                        VerticalOptions="Start"
-                       Text=" "
+                       Text="{Binding AirPressure, StringFormat='{}{0:0.##}'}"
                        FontSize="60" />
 
                 <Label Grid.Column="0"
                        HorizontalOptions="Center"
                        VerticalOptions="EndAndExpand"
-                       Text="mbar"
+                       Text="{Binding AirPressureDesc}"
                        FontSize="20"/>
 
                 <!-- Visibility -->
@@ -173,16 +176,15 @@
 
                 <Label Grid.Column="1"
                        Padding="0, 25, 0, 10"
-                       x:Name="VisibiltyLabel"
                        HorizontalOptions="Center"
                        VerticalOptions="Start"
-                       Text=" "
+                       Text="{Binding Visibility}"
                        FontSize="60"/>
 
                 <Label Grid.Column="1"
                        HorizontalOptions="Center"
                        VerticalOptions="EndAndExpand"
-                       Text="km"
+                       Text="{Binding VisibilityDesc}"
                        FontSize="20"/>
             </Grid>
 
@@ -198,17 +200,15 @@
 
                 <Label Grid.Column="0"
                        Padding="0, 25, 0, 10"
-                       x:Name="UVIndexLabel"
                        HorizontalOptions="Center"
                        VerticalOptions="Start"
-                       Text=" "
+                       Text="{Binding Weather.Current.UvIndex}"
                        FontSize="60" />
 
                 <Label Grid.Column="0"
-                       x:Name="UVDescriptionLabel"
                        HorizontalOptions="Center"
                        VerticalOptions="EndAndExpand"
-                       Text=" "
+                       Text="{Binding UvIndexDesc}"
                        FontSize="20"/>
 
                 <!-- Precipitation -->
@@ -220,16 +220,15 @@
 
                 <Label Grid.Column="1"
                        Padding="0, 25, 0, 10"
-                       x:Name="PrecipitationLabel"
                        HorizontalOptions="Center"
                        VerticalOptions="Start"
-                       Text=" "
+                       Text="{Binding Precipitation}"
                        FontSize="60"/>
 
                 <Label Grid.Column="1"
                        HorizontalOptions="Center"
                        VerticalOptions="EndAndExpand"
-                       Text="mm"
+                       Text="{Binding PrecipitationDesc}"
                        FontSize="20"/>
             </Grid>
         </Grid>
