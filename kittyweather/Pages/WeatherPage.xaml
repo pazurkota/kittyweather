@@ -23,7 +23,7 @@
     </ContentPage.Resources>
     
     <ScrollView>
-        <Grid RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto" RowSpacing="20">
+        <Grid RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto" RowSpacing="20">
             <!-- Search bar -->
             <Entry Placeholder="Search a city"
                    HorizontalTextAlignment="Center"
@@ -225,6 +225,43 @@
                        HorizontalOptions="Center"
                        VerticalOptions="EndAndExpand"
                        Text="{Binding PrecipitationDesc}"
+                       FontSize="20"/>
+            </Grid>
+
+            <!-- Wind speed and direction -->
+            <Grid Grid.Row="8" ColumnDefinitions="*, *" Margin="20, 0">
+                <BoxView Grid.ColumnSpan="2" Style="{StaticResource BlackBoxViewBg}"/>
+
+                <Label Grid.ColumnSpan="2" 
+                       Style="{StaticResource TitleLabel}"
+                       Text="Wind:"/>
+
+                <!-- Wind speed -->
+                <Label Grid.Column="0"
+                       Padding="0, 15, 0, 15"
+                       HorizontalOptions="Center"
+                       VerticalOptions="End"
+                       Text="5 m/s"
+                       FontSize="60" />
+
+                <Label Grid.Column="0"
+                       Text="Wind speeds"
+                       HorizontalOptions="Center"
+                       VerticalOptions="End"
+                       FontSize="20"/>
+
+                <!-- Wind Direction -->
+                <Label Grid.Column="1"
+                       Padding="0, 15, 0, 15"
+                       HorizontalOptions="Center"
+                       VerticalOptions="End"
+                       Text="NNE"
+                       FontSize="60" />
+
+                <Label Grid.Column="1"
+                       Text="Wind direction"
+                       HorizontalOptions="Center"
+                       VerticalOptions="End"
                        FontSize="20"/>
             </Grid>
         </Grid>
