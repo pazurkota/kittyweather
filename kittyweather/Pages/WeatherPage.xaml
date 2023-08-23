@@ -23,7 +23,7 @@
     </ContentPage.Resources>
     
     <ScrollView>
-        <Grid RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto" RowSpacing="20">
+        <Grid RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto" RowSpacing="20">
             <!-- Search bar -->
             <Entry Placeholder="Search a city"
                    HorizontalTextAlignment="Center"
@@ -263,6 +263,56 @@
                        HorizontalOptions="Center"
                        VerticalOptions="End"
                        FontSize="20"/>
+            </Grid>
+
+            <!-- Astronomy -->
+            <Grid Grid.Row="9" ColumnDefinitions="*, *" Margin="20, 0" ColumnSpacing="20">
+
+                <!-- Sunrise and sunset -->
+                <BoxView Grid.Column="0" Style="{StaticResource BlackBoxViewBg}"/>
+
+                <StackLayout Grid.Column="0">
+                    <Label Style="{StaticResource TitleLabel}" Text="Sunrise:"/>
+
+                    <Label HorizontalOptions="Center"
+                           VerticalOptions="Start"
+                           Text="05:58 AM"
+                           FontSize="30" />
+
+                    <Line Stroke="Black"
+                          Margin="7, 0, 7, 0"
+                          X2="200" />
+
+                    <Label Style="{StaticResource TitleLabel}" Text="Sunset:"/>
+
+                    <Label HorizontalOptions="Center"
+                           VerticalOptions="Start"
+                           Text="08:07 PM"
+                           FontSize="30" />
+                </StackLayout>
+
+                <!-- Moonrise and moonset -->
+                <BoxView Grid.Column="1" Style="{StaticResource BlackBoxViewBg}"/>
+
+                <StackLayout Grid.Column="1">
+                    <Label Style="{StaticResource TitleLabel}" Text="Moonrise:"/>
+
+                    <Label HorizontalOptions="Center"
+                           VerticalOptions="Start"
+                           Text="01:48 PM"
+                           FontSize="30" />
+
+                    <Line Stroke="Black"
+                          Margin="7, 0, 7, 0"
+                          X2="200" />
+
+                    <Label Style="{StaticResource TitleLabel}" Text="Moonset:"/>
+
+                    <Label HorizontalOptions="Center"
+                           VerticalOptions="Start"
+                           Text="10:20 PM"
+                           FontSize="30" />
+                </StackLayout>
             </Grid>
         </Grid>
     </ScrollView>
