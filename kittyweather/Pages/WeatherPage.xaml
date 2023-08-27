@@ -78,7 +78,7 @@
             <Grid Grid.Row="4" Margin="20">
                 <BoxView Style="{StaticResource BlackBoxViewBg}"/>
                 
-                <CollectionView x:Name="WeatherHourly" HeightRequest="100" ItemsSource="{Binding HourlyWeather}" HorizontalOptions="Center">
+                <CollectionView HeightRequest="100" ItemsSource="{Binding HourlyWeather}" HorizontalOptions="Center">
                     <CollectionView.ItemsLayout>
                         <LinearItemsLayout Orientation="Horizontal"
                                            ItemSpacing="10"/>
@@ -123,7 +123,7 @@
                        HorizontalOptions="Center"
                        VerticalOptions="Start"
                        Text="{Binding Weather.Current.Humidity, StringFormat='{}{0}%'}"
-                       FontSize="60"/>
+                       FontSize="55"/>
 
                 <!-- Cloud cover -->
                 <BoxView Grid.Column="1" Style="{StaticResource BlackBoxViewBg}"/>
@@ -137,7 +137,7 @@
                        HorizontalOptions="Center"
                        VerticalOptions="Start"
                        Text="{Binding Weather.Current.Cloud, StringFormat='{}{0}%'}"
-                       FontSize="60"
+                       FontSize="55"
                 />
             </Grid>
 
@@ -155,7 +155,7 @@
                        HorizontalOptions="Center"
                        VerticalOptions="Start"
                        Text="{Binding AirPressure, StringFormat='{}{0:0.##}'}"
-                       FontSize="60" />
+                       FontSize="55" />
 
                 <Label Grid.Column="0"
                        HorizontalOptions="Center"
@@ -175,7 +175,7 @@
                        HorizontalOptions="Center"
                        VerticalOptions="Start"
                        Text="{Binding Visibility}"
-                       FontSize="60"/>
+                       FontSize="55"/>
 
                 <Label Grid.Column="1"
                        HorizontalOptions="Center"
@@ -199,7 +199,7 @@
                        HorizontalOptions="Center"
                        VerticalOptions="Start"
                        Text="{Binding Weather.Current.UvIndex}"
-                       FontSize="60" />
+                       FontSize="55" />
 
                 <Label Grid.Column="0"
                        HorizontalOptions="Center"
@@ -219,7 +219,7 @@
                        HorizontalOptions="Center"
                        VerticalOptions="Start"
                        Text="{Binding Precipitation}"
-                       FontSize="60"/>
+                       FontSize="55"/>
 
                 <Label Grid.Column="1"
                        HorizontalOptions="Center"
