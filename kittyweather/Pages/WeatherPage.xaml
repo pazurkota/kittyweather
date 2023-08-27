@@ -276,7 +276,7 @@
 
                     <Label HorizontalOptions="Center"
                            VerticalOptions="Start"
-                           Text="05:58 AM"
+                           Text="{Binding Weather.Forecast.ForecastDay[0].Astro.Sunrise}"
                            FontSize="30" />
 
                     <Line Stroke="Black"
@@ -287,7 +287,7 @@
 
                     <Label HorizontalOptions="Center"
                            VerticalOptions="Start"
-                           Text="08:07 PM"
+                           Text="{Binding Weather.Forecast.ForecastDay[0].Astro.Sunset}"
                            FontSize="30" />
                 </StackLayout>
 
