@@ -245,7 +245,7 @@
                        FontSize="60" />
 
                 <Label Grid.Column="0"
-                       Text="Wind speeds"
+                       Text="Wind speed"
                        HorizontalOptions="Center"
                        VerticalOptions="End"
                        FontSize="20"/>
