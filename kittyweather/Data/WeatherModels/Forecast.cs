@@ -8,7 +8,7 @@ public class Forecast {
 
 public class ForecastDay {
     [JsonProperty("hour")] public List<Hour> HourWeather { get; set; }
-    public Astronomy Astro { get; set; }
+    [JsonProperty("astro")] public Astronomy Astro { get; set; }
 }
 
 public class Hour {

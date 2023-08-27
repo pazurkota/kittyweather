@@ -299,7 +299,7 @@
 
                     <Label HorizontalOptions="Center"
                            VerticalOptions="Start"
-                           Text="01:48 PM"
+                           Text="{Binding Weather.Forecast.ForecastDay[0].Astro.Moonrise}"
                            FontSize="30" />
 
                     <Line Stroke="Black"
@@ -310,7 +310,7 @@
 
                     <Label HorizontalOptions="Center"
                            VerticalOptions="Start"
-                           Text="10:20 PM"
+                           Text="{Binding Weather.Forecast.ForecastDay[0].Astro.Moonset}"
                            FontSize="30" />
                 </StackLayout>
             </Grid>
