@@ -241,8 +241,8 @@
                        Padding="0, 15, 0, 15"
                        HorizontalOptions="Center"
                        VerticalOptions="End"
-                       Text="5 m/s"
-                       FontSize="60" />
+                       Text="{Binding Weather.Current.WindSpeedsMs, StringFormat='{}{0}m/s'}"
+                       FontSize="55" />
 
                 <Label Grid.Column="0"
                        Text="Wind speed"
@@ -255,8 +255,8 @@
                        Padding="0, 15, 0, 15"
                        HorizontalOptions="Center"
                        VerticalOptions="End"
-                       Text="NNE"
-                       FontSize="60" />
+                       Text="{Binding Weather.Current.WindDirection}"
+                       FontSize="55" />
 
                 <Label Grid.Column="1"
                        Text="Wind direction"
