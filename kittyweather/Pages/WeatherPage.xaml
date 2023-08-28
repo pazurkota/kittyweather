@@ -66,12 +66,21 @@
                        VerticalOptions="Start"
                        FontSize="15"/>
                 
-                <Label Padding="10, 30, 10, 10"
+                <Label Padding="10, 30, 10, 45"
                        x:Name="WeatherAlertDesc"
                        Text=" "
                        HorizontalOptions="Start"
                        VerticalOptions="Center"
                        FontSize="18"/>
+                
+                <Button VerticalOptions="End"
+                        HorizontalOptions="Fill"
+                        Padding="00, 0, 230, 0"
+                        BackgroundColor="#00FFFFFF"
+                        Text="Show more..."
+                        TextColor="Black"
+                        FontSize="20"
+                        CornerRadius="15"/>
             </Grid>
             
             <!-- Hourly weather -->
