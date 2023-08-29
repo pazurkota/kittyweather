@@ -75,6 +75,7 @@
                 
                 <Button VerticalOptions="End"
                         HorizontalOptions="Fill"
+                        Clicked="ShowMoreAlertClicked"
                         Padding="00, 0, 230, 0"
                         BackgroundColor="#00FFFFFF"
                         Text="Show more..."

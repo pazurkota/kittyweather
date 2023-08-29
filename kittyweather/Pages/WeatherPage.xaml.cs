@@ -81,4 +81,10 @@ public partial class WeatherPage : ContentPage {
             await DisplayAlert("Error", "Unable to download data: Please try again later.", "OK");
         }
     }
+
+    private async void ShowMoreAlertClicked(object sender, EventArgs e) {
+        var alert = ((WeatherViewModel)BindingContext).Weather.Alerts.WeatherAlerts.FirstOrDefault();
+        
+        await DisplayAlert("Weather Alert", $"{alert.AlertHeadline}:\n\n{alert.AlertDescription}", "OK");
+    }
 }
