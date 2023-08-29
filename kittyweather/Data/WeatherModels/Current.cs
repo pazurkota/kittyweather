@@ -20,6 +20,7 @@ public class Current {
     [JsonProperty("vis_km")] public decimal VisibilityKm { get; set; }
     [JsonProperty("vis_miles")] public decimal VisibilityMiles { get; set; }
     
+    public decimal WindSpeedsMs => Math.Round(WindSpeedKph / 3.6m, 1); // meters per second
     [JsonProperty("wind_kph")] public decimal WindSpeedKph { get; set; }
     [JsonProperty("wind_mph")] public decimal WindSpeedMph { get; set; }
 

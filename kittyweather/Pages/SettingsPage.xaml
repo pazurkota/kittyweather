@@ -20,7 +20,7 @@
     </ContentPage.Resources>
     
     <ScrollView>
-        <Grid RowDefinitions="70, Auto, Auto, Auto, Auto">
+        <Grid RowDefinitions="70, Auto, Auto, Auto, Auto, Auto">
             <Grid Grid.Row="0">
                 <BoxView Grid.Row="0" Color="{DynamicResource Primary}" VerticalOptions="Start"/>
                 <Label Text="Settings" Style="{StaticResource settingsPageText}"/>
@@ -104,6 +104,23 @@
                         HorizontalTextAlignment="Center" 
                         VerticalOptions="EndAndExpand" 
                         Margin="0, 30"/>
+            </Grid>
+
+            <!-- Air pressure and precipitation settings -->
+            <Grid Grid.Row="5" Margin="20">
+                <Label Grid.Column="0"
+                       Text="Wind speeds unit:"
+                       FontSize="20"
+                       HorizontalTextAlignment="Center"/>
+
+                <Picker 
+                        Title="Choose Option" 
+                        ItemsSource="{Binding WindSpeedOptions}"
+                        SelectedItem="{Binding SelectedWindSpeedUnit}"
+                        SelectedIndexChanged="PrecipitationUnitChanged"
+                        HorizontalTextAlignment="Center" 
+                        VerticalOptions="EndAndExpand" 
+                        Margin="80, 30"/>
             </Grid>
         </Grid>
     </ScrollView>

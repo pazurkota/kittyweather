@@ -7,6 +7,7 @@ public partial class SettingsViewModel : ObservableObject {
     [ObservableProperty] private string selectedVisibilityUnit;
     [ObservableProperty] private string selectedAirPressureUnit;
     [ObservableProperty] private string selectedPrecipitationUnit;
+    [ObservableProperty] private string selectedWindSpeedUnit;
 
     // Weather units:
     //
@@ -40,5 +41,11 @@ public partial class SettingsViewModel : ObservableObject {
     public List<string> PrecipitationOptions { get; } = new() {
         "Millimeters",
         "Inches"
+    };
+
+    public List<string> WindSpeedOptions { get; } = new() {
+        "Kilometers per hour (kph)",
+        "Miles per hour (mph)",
+        "Meters per second (m/s)"
     };
 }
