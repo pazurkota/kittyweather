@@ -101,7 +101,7 @@
                                        VerticalOptions="Start"
                                        HeightRequest="50"
                                        WidthRequest="50"
-                                       Source="{Binding Condition.ConditionIcon, StringFormat='{}https:{0}'}"/>
+                                       Source="{Binding WeatherIcon}"/>
                             
                                 <Label Grid.Row="1"
                                        FontSize="20"

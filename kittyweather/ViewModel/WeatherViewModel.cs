@@ -68,6 +68,8 @@ public partial class WeatherViewModel : ObservableObject
                     hour.Temperature = $"{hour.TemperatureF}°F";
                     break;
             }
+            
+            hour.WeatherIcon = "Images/Day/" + GetWeatherIcon()[hour.Condition.ConditionCode];
         }
 
         HourlyWeather = sortedHourly;
