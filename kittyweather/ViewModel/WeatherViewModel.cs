@@ -22,6 +22,8 @@ public partial class WeatherViewModel : ObservableObject
     [ObservableProperty] private string precipitationDesc;
 
     [ObservableProperty] private string uvIndexDesc;
+    
+    [ObservableProperty] private string weatherIcon;
 
     public async Task GetWeatherData(double latitude, double longitude) {
         Weather data = await ApiService.GetWeather(latitude, longitude);
@@ -130,7 +132,11 @@ public partial class WeatherViewModel : ObservableObject
                 PrecipitationDesc = "inches";
                 break;
         }
-    }   
+    }
+
+    public void SetWeatherIcon() {
+        WeatherIcon = "Images/Day/" + GetWeatherIcon()[Weather.Current.Condition.ConditionCode];
+    } 
     
     private Dictionary<int, string> GetWeatherIcon() {
         var dictionary = new Dictionary<int, string> {
