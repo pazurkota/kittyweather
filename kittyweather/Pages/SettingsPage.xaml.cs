@@ -50,4 +50,8 @@ public partial class SettingsPage : ContentPage {
     private void PrecipitationUnitChanged(object sender, EventArgs e) {
         Preferences.Set("precipitationUnit", $"{((Picker)sender).SelectedItem}");
     }
+
+    private void WindSpeedUnitChanged(object sender, EventArgs e) {
+        Preferences.Set("windSpeedUnit", $"{((Picker)sender).SelectedItem}");
+    }
 }

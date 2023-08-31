@@ -143,13 +143,13 @@ public partial class WeatherViewModel : ObservableObject
         
     switch (unit) {
             case "KPH":
-                WindSpeed = $"{Weather.Current.WindSpeedKph} km/h";
+                WindSpeed = $"{Weather.Current.WindSpeedKph}kph";
                 break;
             case "MPH":
-                WindSpeed = $"{Weather.Current.WindSpeedMph} mph";
+                WindSpeed = $"{Weather.Current.WindSpeedMph}mph";
                 break;
             case "M/S":
-                WindSpeed = $"{Weather.Current.WindSpeedsMs} m/s";
+                WindSpeed = $"{Weather.Current.WindSpeedsMs}m/s";
                 break;
         }
     }
