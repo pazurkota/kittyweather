@@ -15,12 +15,14 @@ public partial class SettingsViewModel : ObservableObject {
     // Visibility: "visibilityUnit" (Kilometers, Miles)
     // Air Pressure: "airPressureUnit" (Millibars, Inches)
     // Precipitation: "precipitationUnit" (Millimeters, Inches)
+    // Wind Speed: "windSpeedUnit" (KPH, MPH, M/S)
 
     public SettingsViewModel() {
         SelectedTemperatureUnit = Preferences.Get("temperatureUnit", "Celsius");
         SelectedVisibilityUnit = Preferences.Get("visibilityUnit", "Kilometers");
         SelectedAirPressureUnit = Preferences.Get("airPressureUnit", "Millibars");
         SelectedPrecipitationUnit = Preferences.Get("precipitationUnit", "Millimeters");
+        SelectedWindSpeedUnit = Preferences.Get("windSpeedUnit", "KPH");
     }
 
     public List<string> TemperatureOptions { get; } = new() {
@@ -44,8 +46,8 @@ public partial class SettingsViewModel : ObservableObject {
     };
 
     public List<string> WindSpeedOptions { get; } = new() {
-        "Kilometers per hour (kph)",
-        "Miles per hour (mph)",
-        "Meters per second (m/s)"
+        "KPH",
+        "MPH",
+        "M/S"
     };
 }
