@@ -28,6 +28,7 @@ public partial class WeatherPage : ContentPage {
             viewModel.GetAirPressure();
             viewModel.GetPrecipitation();
             viewModel.SetWeatherIcon();
+            viewModel.GetWindSpeed();
             
             var alert = viewModel.Weather.Alerts.WeatherAlerts.FirstOrDefault();
 
@@ -68,6 +69,7 @@ public partial class WeatherPage : ContentPage {
             viewModel.GetAirPressure();
             viewModel.GetPrecipitation();
             viewModel.SetWeatherIcon();
+            viewModel.GetWindSpeed();
 
             var alert = viewModel.Weather.Alerts.WeatherAlerts.FirstOrDefault();
 

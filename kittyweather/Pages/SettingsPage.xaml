@@ -117,7 +117,7 @@
                         Title="Choose Option" 
                         ItemsSource="{Binding WindSpeedOptions}"
                         SelectedItem="{Binding SelectedWindSpeedUnit}"
-                        SelectedIndexChanged="PrecipitationUnitChanged"
+                        SelectedIndexChanged="WindSpeedUnitChanged"
                         HorizontalTextAlignment="Center" 
                         VerticalOptions="EndAndExpand" 
                         Margin="80, 30"/>
