@@ -23,6 +23,8 @@ public partial class WeatherViewModel : ObservableObject
 
     [ObservableProperty] private string uvIndexDesc;
     
+    [ObservableProperty] private string windSpeed;
+    
     [ObservableProperty] private string weatherIcon;
 
     public async Task GetWeatherData(double latitude, double longitude) {
@@ -132,6 +134,22 @@ public partial class WeatherViewModel : ObservableObject
             case "Inches":
                 Precipitation = $"{Weather.Current.PrecipitationIn}";
                 PrecipitationDesc = "inches";
+                break;
+        }
+    }
+
+    public void GetWindSpeed() {
+        var unit = _settingsViewModel.SelectedWindSpeedUnit;
+        
+    switch (unit) {
+            case "KPH":
+                WindSpeed = $"{Weather.Current.WindSpeedKph} km/h";
+                break;
+            case "MPH":
+                WindSpeed = $"{Weather.Current.WindSpeedMph} mph";
+                break;
+            case "M/S":
+                WindSpeed = $"{Weather.Current.WindSpeedsMs} m/s";
                 break;
         }
     }
