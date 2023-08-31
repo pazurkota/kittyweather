@@ -251,10 +251,10 @@
                        HorizontalOptions="Center"
                        VerticalOptions="End"
                        Text="{Binding WindSpeed}"
-                       FontSize="50"/>
+                       FontSize="55"/>
 
                 <Label Grid.Column="0"
-                       Text="Wind speed"
+                       Text="{Binding WindSpeedDesc, StringFormat='{}Wind speed ({0})'}"
                        HorizontalOptions="Center"
                        VerticalOptions="End"
                        FontSize="20"/>
@@ -265,7 +265,7 @@
                        HorizontalOptions="Center"
                        VerticalOptions="End"
                        Text="{Binding Weather.Current.WindDirection}"
-                       FontSize="50" />
+                       FontSize="55" />
 
                 <Label Grid.Column="1"
                        Text="Wind direction"
