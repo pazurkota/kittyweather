@@ -46,7 +46,6 @@ If you still have problems with deploy, please check the [official documentation
 ## Acknowledgements
 
 - Tab bar icons and search icon are from [Google Material Design](https://material.io/resources/icons/?style=baseline)
-- The cloud icon at weather section is from [Weather Icons](https://erikflowers.github.io/weather-icons/)
 - The weather icons are from [Weather Icons](https://erikflowers.github.io/weather-icons/)
 
 ## Contributing
