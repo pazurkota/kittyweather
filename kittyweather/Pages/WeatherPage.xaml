@@ -276,6 +276,7 @@
                     <Label HorizontalOptions="Center"
                            VerticalOptions="Start"
                            Text="{Binding Weather.Forecast.ForecastDay[0].Astro.Sunrise}"
+                           TextColor="White"
                            FontSize="30" />
 
                     <Line Stroke="Black"
@@ -300,6 +301,7 @@
                     <Label HorizontalOptions="Center"
                            VerticalOptions="Start"
                            Text="{Binding Weather.Forecast.ForecastDay[0].Astro.Moonrise}"
+                           TextColor="White"
                            FontSize="30" />
 
                     <Line Stroke="Black"
