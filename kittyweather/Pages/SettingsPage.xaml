@@ -11,7 +11,7 @@
     </ContentPage.BindingContext>
     
     <ContentPage.Resources>
-        <Style x:Key="settingsPageText" TargetType="Label">
+        <Style x:Key="SettingsPageText" TargetType="Label">
             <Setter Property="HorizontalTextAlignment" Value="Center"/>
             <Setter Property="VerticalTextAlignment" Value="Center"/>
             <Setter Property="TextColor" Value="White"/>
@@ -24,18 +24,26 @@
             <Setter Property="FontSize" Value="20"/>
             <Setter Property="TextColor" Value="White"/>
         </Style>
+        
+        <Style x:Key="SettingPicker" TargetType="Picker">
+            <Setter Property="HorizontalTextAlignment" Value="Center"/>
+            <Setter Property="VerticalOptions" Value="EndAndExpand"/>
+            <Setter Property="Margin" Value="0, 30"/>
+            <Setter Property="TextColor" Value="White"/>
+        </Style>
     </ContentPage.Resources>
     
     <ScrollView>
         <Grid RowDefinitions="70, Auto, Auto, Auto, Auto, Auto">
             <Grid Grid.Row="0">
                 <BoxView Grid.Row="0" Color="{DynamicResource Tertiary}" VerticalOptions="Start"/>
-                <Label Text="Settings" Style="{StaticResource settingsPageText}"/>
+                <Label Text="Settings" Style="{StaticResource SettingsPageText}"/>
             </Grid>
             
             <Entry Grid.Row="1"
                    Margin="20, 10"
                    Placeholder="API Key"
+                   PlaceholderColor="White"
                    HorizontalTextAlignment="Center"
                    IsPassword="True"
                    Completed="OnEntryCompleted"
@@ -63,12 +71,10 @@
                 
                 <Picker Grid.Column="0" 
                         Title="Choose Option" 
+                        Style="{StaticResource SettingPicker}"
                         ItemsSource="{Binding TemperatureOptions}"
                         SelectedItem="{Binding SelectedTemperatureUnit}"
-                        SelectedIndexChanged="TemperatureUnitChanged"
-                        HorizontalTextAlignment="Center" 
-                        VerticalOptions="EndAndExpand" 
-                        Margin="0, 30"/>
+                        SelectedIndexChanged="TemperatureUnitChanged"/>
                 
                 <Label Grid.Column="1"
                        Text="Visibility unit:"
@@ -76,12 +82,10 @@
                 
                 <Picker Grid.Column="1" 
                         Title="Choose Option" 
+                        Style="{StaticResource SettingPicker}"
                         ItemsSource="{Binding VisibilityOptions}"
                         SelectedItem="{Binding SelectedVisibilityUnit}"
-                        SelectedIndexChanged="VisibilityUnitChanged"
-                        HorizontalTextAlignment="Center" 
-                        VerticalOptions="EndAndExpand" 
-                        Margin="0, 30"/>
+                        SelectedIndexChanged="VisibilityUnitChanged"/>
             </Grid>
             
             <!-- Air pressure and precipitation settings -->
@@ -92,12 +96,10 @@
                 
                 <Picker Grid.Column="0" 
                         Title="Choose Option" 
+                        Style="{StaticResource SettingPicker}"
                         ItemsSource="{Binding AirPressureOptions}"
                         SelectedItem="{Binding SelectedAirPressureUnit}"
-                        SelectedIndexChanged="AirPressureUnitChanged"
-                        HorizontalTextAlignment="Center" 
-                        VerticalOptions="EndAndExpand" 
-                        Margin="0, 30"/>
+                        SelectedIndexChanged="AirPressureUnitChanged"/>
                 
                 <Label Grid.Column="1"
                        Text="Precipitation unit:"
@@ -105,15 +107,13 @@
                 
                 <Picker Grid.Column="1" 
                         Title="Choose Option" 
+                        Style="{StaticResource SettingPicker}"
                         ItemsSource="{Binding PrecipitationOptions}"
                         SelectedItem="{Binding SelectedPrecipitationUnit}"
-                        SelectedIndexChanged="PrecipitationUnitChanged"
-                        HorizontalTextAlignment="Center" 
-                        VerticalOptions="EndAndExpand" 
-                        Margin="0, 30"/>
+                        SelectedIndexChanged="PrecipitationUnitChanged"/>
             </Grid>
 
-            <!-- Air pressure and precipitation settings -->
+            <!-- Wind speed setting -->
             <Grid Grid.Row="5" Margin="20">
                 <Label Grid.Column="0"
                        Text="Wind speeds unit:"
@@ -121,12 +121,10 @@
 
                 <Picker 
                         Title="Choose Option" 
+                        Style="{StaticResource SettingPicker}"
                         ItemsSource="{Binding WindSpeedOptions}"
                         SelectedItem="{Binding SelectedWindSpeedUnit}"
-                        SelectedIndexChanged="WindSpeedUnitChanged"
-                        HorizontalTextAlignment="Center" 
-                        VerticalOptions="EndAndExpand" 
-                        Margin="80, 30"/>
+                        SelectedIndexChanged="WindSpeedUnitChanged"/>
             </Grid>
         </Grid>
     </ScrollView>
