@@ -2,16 +2,15 @@
 
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="kittyweather.Pages.AboutPage">
+             x:Class="kittyweather.Pages.AboutPage"
+             BackgroundColor="{DynamicResource Primary}">
     <ContentPage.Content>
         <Grid RowDefinitions="70, Auto, Auto">
                 <Grid Grid.Row="0">
                     <BoxView
                         VerticalOptions="Fill"
-                        Color="{DynamicResource Primary}"
-                    />
-                    <Label
-                        Text="About"
+                        Color="{DynamicResource Tertiary}"/>
+                    <Label Text="About"
                         FontSize="50"
                         FontAttributes="Bold"
                         TextColor="White"
@@ -24,12 +23,14 @@
                        VerticalOptions="Start"
                        Text="Kitty Weather"
                        FontSize="40"
+                       TextColor="White"
                        />
                 
                 <Label Grid.Row="2"
                     HorizontalOptions="Center"
                     VerticalOptions="Start"
                     Text="Created by pazurkota and open source contributors"
+                    TextColor="White"
                     HorizontalTextAlignment="Center"
                     FontSize="20"
                     />
