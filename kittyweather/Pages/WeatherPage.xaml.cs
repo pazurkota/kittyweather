@@ -11,6 +11,12 @@ public partial class WeatherPage : ContentPage {
         InitializeComponent();
         BindingContext = new WeatherViewModel();
     }
+    
+    private async Task GetDeviceLocation() {
+        var location = await Geolocation.GetLocationAsync();
+        latitude = location.Latitude;
+        longitude = location.Longitude;
+    }
 
     protected override async void OnAppearing() {
         base.OnAppearing();
@@ -46,13 +52,7 @@ public partial class WeatherPage : ContentPage {
             await DisplayAlert("Error", "Unable to download data: Please try again later.", "OK");
         }   
     }
-
-    private async Task GetDeviceLocation() {
-        var location = await Geolocation.GetLocationAsync();
-        latitude = location.Latitude;
-        longitude = location.Longitude;
-    }
-
+    
     private async void SearchCity(object sender, EventArgs e)
     {
         try {

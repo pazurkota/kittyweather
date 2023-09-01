@@ -2,6 +2,8 @@
 
 A free, open-source, cat-themed and multiplatform weather app written with .NET MAUI
 
+![Release](https://img.shields.io/github/v/release/pazurkota/kittyweather?include_prereleases&style=for-the-badge)
+![License](https://img.shields.io/github/license/pazurkota/kittyweather?style=for-the-badge)
 ## Features
 
 - Shows temperature with current weather state
@@ -45,6 +47,7 @@ If you still have problems with deploy, please check the [official documentation
 
 - Tab bar icons and search icon are from [Google Material Design](https://material.io/resources/icons/?style=baseline)
 - The cloud icon at weather section is from [Weather Icons](https://erikflowers.github.io/weather-icons/)
+- The weather icons are from [Weather Icons](https://erikflowers.github.io/weather-icons/)
 
 ## Contributing
 Pull requests are always welcome! For major changes, please open an issue first to discuss what you would like to change.
