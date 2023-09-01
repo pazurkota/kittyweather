@@ -4,11 +4,11 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:viewmodel="clr-namespace:kittyweather.ViewModel"
              x:Class="kittyweather.Pages.WeatherPage"
-             BackgroundColor="LightBlue">
+             BackgroundColor="{DynamicResource Primary}">
 
     <ContentPage.Resources>
-        <Style x:Key="BlackBoxViewBg" TargetType="BoxView">
-            <Setter Property="Color" Value="Black"/>
+        <Style x:Key="InfoBoxView" TargetType="BoxView">
+            <Setter Property="Color" Value="{DynamicResource Secondary}"/>
             <Setter Property="Opacity" Value="0.5"/>
             <Setter Property="CornerRadius" Value="15"/>
             <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
@@ -16,73 +16,94 @@
         </Style>
 
         <Style x:Key="TitleLabel" TargetType="Label">
+            <Setter Property="TextColor" Value="White"/>
             <Setter Property="HorizontalOptions" Value="Center"/>
             <Setter Property="VerticalOptions" Value="Start"/>
             <Setter Property="FontSize" Value="Large"/>
         </Style>
+           
+        <Style x:Key="InfoText" TargetType="Label">
+            <Setter Property="TextColor" Value="White"/>
+            <Setter Property="HorizontalOptions" Value="Center"/>
+            <Setter Property="VerticalOptions" Value="Start"/>
+            <Setter Property="FontSize" Value="55"/>
+        </Style>
+           
+        <Style x:Key="LowerInfoText" TargetType="Label">
+               <Setter Property="TextColor" Value="White"/>
+               <Setter Property="HorizontalOptions" Value="Center"/>
+               <Setter Property="VerticalOptions" Value="End"/>
+               <Setter Property="FontSize" Value="20"/>
+        </Style>
     </ContentPage.Resources>
     
     <ScrollView>
-        <Grid RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto" RowSpacing="20">
+        <Grid RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto" RowSpacing="20">
             <!-- Search bar -->
-            <StackLayout Grid.Row="0" Margin="20, 20, 20, 0" Orientation="Horizontal" Spacing="20">
-                <Entry Placeholder="Search a city:"
-                       PlaceholderColor="Black"
-                       HorizontalOptions="FillAndExpand"/>
-                
-                <Button ImageSource="search.svg" 
-                        BackgroundColor="Transparent" 
-                        HorizontalOptions="End"
-                        WidthRequest="30"
-                        HeightRequest="30"/>
-            </StackLayout>
+            <Entry Placeholder="Search a city"
+                   HorizontalTextAlignment="Center"
+                   PlaceholderColor="Black"
+                   HorizontalOptions="FillAndExpand"
+                   Completed="SearchCity"
+                   Margin="20"/>
             
             <!-- City name with temperature and weather condition -->
             <StackLayout Grid.Row="1" Orientation="Vertical">
                 <Label HorizontalOptions="Center"
                     FontSize="40"
-                    TextColor="SlateGray"
+                    TextColor="White"
                     Text="{Binding Weather.Location.Name}"/>
 
                 <Label HorizontalOptions="Center"
                        FontSize="20"
-                       TextColor="SlateGray"
+                       TextColor="White"
                        Text="{Binding Path=Temperature}">
                 </Label>
             </StackLayout>
             
             <!-- Weather Image -->
             <Image Grid.Row="2" 
-                   x:Name="WeatherImage"
-                   Source="{Binding Weather.Current.Condition.ConditionIcon, StringFormat='{}https:{0}'}"
+                   Source="{Binding WeatherIcon}"
                    VerticalOptions="Start"
                    WidthRequest="300"
                    HeightRequest="300"/>
             
             <!-- Weather Alerts -->
             <Grid Grid.Row="3" Margin="20, 0" x:Name="WeatherAlertBox" IsVisible="False">
-                <BoxView Style="{StaticResource BlackBoxViewBg}"/>
+                <BoxView Style="{StaticResource InfoBoxView}"/>
                 
                 <Label Padding="10, 4, 0, 0"
                        Text="WEATHER ALERT:"
+                       TextColor="White"
                        FontAttributes="Bold"
                        HorizontalOptions="Start"
                        VerticalOptions="Start"
                        FontSize="15"/>
                 
-                <Label Padding="10, 30, 10, 10"
+                <Label Padding="10, 30, 10, 45"
                        x:Name="WeatherAlertDesc"
                        Text=" "
+                       TextColor="White"
                        HorizontalOptions="Start"
                        VerticalOptions="Center"
                        FontSize="18"/>
+                
+                <Button VerticalOptions="End"
+                        HorizontalOptions="Fill"
+                        Clicked="ShowMoreAlertClicked"
+                        Padding="00, 0, 230, 0"
+                        BackgroundColor="#00FFFFFF"
+                        Text="Show more..."
+                        TextColor="White"
+                        FontSize="20"
+                        CornerRadius="15"/>
             </Grid>
             
             <!-- Hourly weather -->
             <Grid Grid.Row="4" Margin="20">
-                <BoxView Style="{StaticResource BlackBoxViewBg}"/>
+                <BoxView Style="{StaticResource InfoBoxView}"/>
                 
-                <CollectionView x:Name="WeatherHourly" HeightRequest="100" ItemsSource="{Binding HourlyWeather}" HorizontalOptions="Center">
+                <CollectionView HeightRequest="100" ItemsSource="{Binding HourlyWeather}" HorizontalOptions="Center">
                     <CollectionView.ItemsLayout>
                         <LinearItemsLayout Orientation="Horizontal"
                                            ItemSpacing="10"/>
@@ -96,17 +117,19 @@
                                        VerticalOptions="Start"
                                        HeightRequest="50"
                                        WidthRequest="50"
-                                       Source="{Binding Condition.ConditionIcon, StringFormat='{}https:{0}'}"/>
+                                       Source="{Binding WeatherIcon}"/>
                             
                                 <Label Grid.Row="1"
                                        FontSize="20"
                                        HorizontalOptions="Center"
-                                       Text="{Binding Temperature}"/>
+                                       Text="{Binding Temperature}"
+                                       TextColor="White"/>
                             
                                 <Label Grid.Row="2"
                                        FontSize="15"
                                        HorizontalOptions="Center"
-                                       Text="{Binding ParsedTime}"/>
+                                       Text="{Binding ParsedTime}"
+                                       TextColor="White"/>
                             </Grid>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
@@ -116,7 +139,7 @@
             <!-- Humidity and Cloud Cover -->
             <Grid Grid.Row="5" ColumnDefinitions="0.5*, 0.5*" Margin="20, 0" ColumnSpacing="20">
                 <!-- Humidity -->
-                <BoxView Grid.Column="0" Style="{StaticResource BlackBoxViewBg}"/>
+                <BoxView Grid.Column="0" Style="{StaticResource InfoBoxView}"/>
                 
                 <Label Grid.Column="0"
                        Style="{StaticResource TitleLabel}"
@@ -124,13 +147,11 @@
 
                 <Label Grid.Column="0"
                        Padding="0, 30, 0, 0"
-                       HorizontalOptions="Center"
-                       VerticalOptions="Start"
                        Text="{Binding Weather.Current.Humidity, StringFormat='{}{0}%'}"
-                       FontSize="60"/>
+                       Style="{StaticResource InfoText}"/>
 
                 <!-- Cloud cover -->
-                <BoxView Grid.Column="1" Style="{StaticResource BlackBoxViewBg}"/>
+                <BoxView Grid.Column="1" Style="{StaticResource InfoBoxView}"/>
 
                 <Label Grid.Column="1"
                        Style="{StaticResource TitleLabel}"
@@ -138,17 +159,14 @@
 
                 <Label Grid.Column="1"
                        Padding="0, 25, 0, 0"
-                       HorizontalOptions="Center"
-                       VerticalOptions="Start"
                        Text="{Binding Weather.Current.Cloud, StringFormat='{}{0}%'}"
-                       FontSize="60"
-                />
+                       Style="{StaticResource InfoText}"/>
             </Grid>
 
             <!-- Air Pressure and Visibility -->
             <Grid Grid.Row="6" ColumnDefinitions="0.5*, 0.5*" Margin="20, 0" ColumnSpacing="20">
                 <!-- Air Pressure -->
-                <BoxView Grid.Column="0" Style="{StaticResource BlackBoxViewBg}"/>
+                <BoxView Grid.Column="0" Style="{StaticResource InfoBoxView}"/>
 
                 <Label Grid.Column="0"
                        Style="{StaticResource TitleLabel}"
@@ -156,19 +174,15 @@
 
                 <Label Grid.Column="0"
                        Padding="0, 25, 0, 10"
-                       HorizontalOptions="Center"
-                       VerticalOptions="Start"
                        Text="{Binding AirPressure, StringFormat='{}{0:0.##}'}"
-                       FontSize="60" />
+                       Style="{StaticResource InfoText}"/>
 
                 <Label Grid.Column="0"
-                       HorizontalOptions="Center"
-                       VerticalOptions="EndAndExpand"
                        Text="{Binding AirPressureDesc}"
-                       FontSize="20"/>
+                       Style="{StaticResource LowerInfoText}"/>
 
                 <!-- Visibility -->
-                <BoxView Grid.Column="1" Style="{StaticResource BlackBoxViewBg}"/>
+                <BoxView Grid.Column="1" Style="{StaticResource InfoBoxView}"/>
 
                 <Label Grid.Column="1"
                        Style="{StaticResource TitleLabel}"
@@ -176,22 +190,18 @@
 
                 <Label Grid.Column="1"
                        Padding="0, 25, 0, 10"
-                       HorizontalOptions="Center"
-                       VerticalOptions="Start"
                        Text="{Binding Visibility}"
-                       FontSize="60"/>
+                       Style="{StaticResource InfoText}"/>
 
                 <Label Grid.Column="1"
-                       HorizontalOptions="Center"
-                       VerticalOptions="EndAndExpand"
                        Text="{Binding VisibilityDesc}"
-                       FontSize="20"/>
+                       Style="{StaticResource LowerInfoText}"/>
             </Grid>
 
             <!-- UV Index and Precipitation -->
             <Grid Grid.Row="7" ColumnDefinitions="0.5*, 0.5*" Margin="20, 0" ColumnSpacing="20">
                 <!-- UV Index -->
-                <BoxView Grid.Column="0" Style="{StaticResource BlackBoxViewBg}"/>
+                <BoxView Grid.Column="0" Style="{StaticResource InfoBoxView}"/>
 
                 <Label Grid.Column="0"
                        Style="{StaticResource TitleLabel}"
@@ -200,19 +210,15 @@
 
                 <Label Grid.Column="0"
                        Padding="0, 25, 0, 10"
-                       HorizontalOptions="Center"
-                       VerticalOptions="Start"
                        Text="{Binding Weather.Current.UvIndex}"
-                       FontSize="60" />
+                       Style="{StaticResource InfoText}"/>
 
                 <Label Grid.Column="0"
-                       HorizontalOptions="Center"
-                       VerticalOptions="EndAndExpand"
                        Text="{Binding UvIndexDesc}"
-                       FontSize="20"/>
+                       Style="{StaticResource LowerInfoText}"/>
 
                 <!-- Precipitation -->
-                <BoxView Grid.Column="1" Style="{StaticResource BlackBoxViewBg}"/>
+                <BoxView Grid.Column="1" Style="{StaticResource InfoBoxView}"/>
 
                 <Label Grid.Column="1"
                        Style="{StaticResource TitleLabel}"
@@ -220,16 +226,95 @@
 
                 <Label Grid.Column="1"
                        Padding="0, 25, 0, 10"
-                       HorizontalOptions="Center"
-                       VerticalOptions="Start"
                        Text="{Binding Precipitation}"
-                       FontSize="60"/>
+                       Style="{StaticResource InfoText}"/>
 
                 <Label Grid.Column="1"
-                       HorizontalOptions="Center"
-                       VerticalOptions="EndAndExpand"
                        Text="{Binding PrecipitationDesc}"
-                       FontSize="20"/>
+                       Style="{StaticResource LowerInfoText}"/>
+            </Grid>
+
+            <!-- Wind speed and direction -->
+            <Grid Grid.Row="8" ColumnDefinitions="*, *" Margin="20, 0">
+                <BoxView Grid.ColumnSpan="2" Style="{StaticResource InfoBoxView}"/>
+
+                <Label Grid.ColumnSpan="2" 
+                       Style="{StaticResource TitleLabel}"
+                       Text="Wind:"/>
+
+                <!-- Wind speed -->
+                <Label Grid.Column="0"
+                       Padding="0, 15, 0, 15"
+                       Text="{Binding WindSpeed}"
+                       Style="{StaticResource InfoText}"/>
+
+                <Label Grid.Column="0"
+                       Text="{Binding WindSpeedDesc, StringFormat='{}Wind speed ({0})'}"
+                       Style="{StaticResource LowerInfoText}"/>
+
+                <!-- Wind Direction -->
+                <Label Grid.Column="1"
+                       Padding="0, 15, 0, 15"
+                       Text="{Binding Weather.Current.WindDirection}"
+                       Style="{StaticResource InfoText}"/>
+
+                <Label Grid.Column="1"
+                       Text="Wind direction"
+                       Style="{StaticResource LowerInfoText}"/>
+            </Grid>
+
+            <!-- Astronomy -->
+            <Grid Grid.Row="9" ColumnDefinitions="*, *" Margin="20, 0" ColumnSpacing="20">
+
+                <!-- Sunrise and sunset -->
+                <BoxView Grid.Column="0" Style="{StaticResource InfoBoxView}"/>
+
+                <StackLayout Grid.Column="0">
+                    <Label Style="{StaticResource TitleLabel}" Text="Sunrise:"/>
+
+                    <Label HorizontalOptions="Center"
+                           VerticalOptions="Start"
+                           Text="{Binding Weather.Forecast.ForecastDay[0].Astro.Sunrise}"
+                           TextColor="White"
+                           FontSize="30" />
+
+                    <Line Stroke="White"
+                          Margin="7, 0, 7, 0"
+                          X2="200" />
+
+                    <Label Style="{StaticResource TitleLabel}" Text="Sunset:"/>
+
+                    <Label HorizontalOptions="Center"
+                           VerticalOptions="Start"
+                           Text="{Binding Weather.Forecast.ForecastDay[0].Astro.Sunset}"
+                           TextColor="White"
+                           FontSize="30" />
+                </StackLayout>
+
+                <!-- Moonrise and moonset -->
+                <BoxView Grid.Column="1" Style="{StaticResource InfoBoxView}"/>
+
+                <StackLayout Grid.Column="1">
+                    <Label Style="{StaticResource TitleLabel}" Text="Moonrise:"/>
+
+                    <Label HorizontalOptions="Center"
+                           VerticalOptions="Start"
+                           Text="{Binding Weather.Forecast.ForecastDay[0].Astro.Moonrise}"
+                           TextColor="White"
+                           FontSize="30" />
+
+                    <Line Stroke="White"
+                          Margin="7, 0, 7, 0"
+                          X2="200" />
+
+                    <Label Style="{StaticResource TitleLabel}" Text="Moonset:"/>
+
+                    <Label HorizontalOptions="Center"
+                           VerticalOptions="Start"
+                           Text="{Binding Weather.Forecast.ForecastDay[0].Astro.Moonset}"
+                           TextColor="White"
+                           FontSize="30" />
+                </StackLayout>
             </Grid>
         </Grid>
     </ScrollView>

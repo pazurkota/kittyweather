@@ -22,9 +22,20 @@ public partial class WeatherViewModel : ObservableObject
     [ObservableProperty] private string precipitationDesc;
 
     [ObservableProperty] private string uvIndexDesc;
+    
+    [ObservableProperty] private string windSpeed;
+    [ObservableProperty] private string windSpeedDesc;
+    
+    [ObservableProperty] private string weatherIcon;
 
     public async Task GetWeatherData(double latitude, double longitude) {
         Weather data = await ApiService.GetWeather(latitude, longitude);
+        Weather = data;
+    }
+
+    public async Task GetWeatherData(string city)
+    {
+        Weather data = await ApiService.GetWeather(city);
         Weather = data;
     }
 
@@ -60,6 +71,8 @@ public partial class WeatherViewModel : ObservableObject
                     hour.Temperature = $"{hour.TemperatureF}°F";
                     break;
             }
+            
+            hour.WeatherIcon = "Images/Day/" + GetWeatherIcon()[hour.Condition.ConditionCode];
         }
 
         HourlyWeather = sortedHourly;
@@ -124,5 +137,83 @@ public partial class WeatherViewModel : ObservableObject
                 PrecipitationDesc = "inches";
                 break;
         }
-    }   
+    }
+
+    public void GetWindSpeed() {
+        var unit = _settingsViewModel.SelectedWindSpeedUnit;
+        
+        switch (unit) {
+            case "KPH":
+                WindSpeed = $"{Weather.Current.WindSpeedKph}";
+                WindSpeedDesc = "kph";
+                break;
+            case "MPH":
+                WindSpeed = $"{Weather.Current.WindSpeedMph}";
+                WindSpeedDesc = "mph";
+                break;
+            case "M/S":
+                WindSpeed = $"{Weather.Current.WindSpeedsMs}";
+                WindSpeedDesc = "m/s";
+                break;
+        }
+    }
+
+    public void SetWeatherIcon() {
+        WeatherIcon = "Images/Day/" + GetWeatherIcon()[Weather.Current.Condition.ConditionCode];
+    } 
+    
+    private Dictionary<int, string> GetWeatherIcon() {
+        var dictionary = new Dictionary<int, string> {
+            {1000, "sunny.svg"},
+            {1003, "partly_cloudy.svg"},
+            {1006, "cloudy.svg"},
+            {1009, "overcast.svg"},
+            {1030, "fog.svg"},
+            {1063, "showers.svg"},
+            {1066, "snow.svg"},
+            {1069, "snow.svg"},
+            {1072, "snow.svg"},
+            {1087, "thunderstorm.svg"},
+            {1114, "snow.svg"},
+            {1117, "snow.svg"},
+            {1135, "fog.svg"},
+            {1147, "snow.svg"},
+            {1150, "showers.svg"},
+            {1153, "showers.svg"},
+            {1168, "showers.svg"},
+            {1171, "showers.svg"},
+            {1180, "showers.svg"},
+            {1183, "showers.svg"},
+            {1186, "showers.svg"},
+            {1189, "showers.svg"},
+            {1192, "showers.svg"},
+            {1195, "showers.svg"},
+            {1198, "showers.svg"},
+            {1201, "showers.svg"},
+            {1204, "showers.svg"},
+            {1207, "showers.svg"},
+            {1210, "showers.svg"},
+            {1213, "snow.svg"},
+            {1216, "snow.svg"},
+            {1219, "snow.svg"},
+            {1222, "snow.svg"},
+            {1225, "snow.svg"},
+            {1237, "thunderstorm.svg"},
+            {1240, "showers.svg"},
+            {1243, "showers.svg"},
+            {1246, "showers.svg"},
+            {1249, "showers.svg"},
+            {1252, "showers.svg"},
+            {1255, "showers.svg"},
+            {1258, "showers.svg"},
+            {1261, "showers.svg"},
+            {1264, "showers.svg"},
+            {1273, "thunderstorm.svg"},
+            {1276, "thunderstorm.svg"},
+            {1279, "thunderstorm.svg"},
+            {1282, "thunderstorm.svg"}
+        };
+
+        return dictionary;
+    }
 }
