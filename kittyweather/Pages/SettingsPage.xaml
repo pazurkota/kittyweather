@@ -3,7 +3,8 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:viewmodel="clr-namespace:kittyweather.ViewModel"
-             x:Class="kittyweather.Pages.SettingsPage">
+             x:Class="kittyweather.Pages.SettingsPage"
+             BackgroundColor="{DynamicResource Primary}">
     
     <ContentPage.BindingContext>
         <viewmodel:SettingsViewModel />
@@ -22,7 +23,7 @@
     <ScrollView>
         <Grid RowDefinitions="70, Auto, Auto, Auto, Auto, Auto">
             <Grid Grid.Row="0">
-                <BoxView Grid.Row="0" Color="{DynamicResource Primary}" VerticalOptions="Start"/>
+                <BoxView Grid.Row="0" Color="{DynamicResource Tertiary}" VerticalOptions="Start"/>
                 <Label Text="Settings" Style="{StaticResource settingsPageText}"/>
             </Grid>
             
@@ -37,11 +38,15 @@
             <Grid Grid.Row="2" ColumnDefinitions="*, *" Margin="20, 0" ColumnSpacing="20">
                 <Button Grid.Column="0"
                     Text="Check API Key"
-                    Clicked="CheckApiKey"/>
+                    Clicked="CheckApiKey"
+                    FontAttributes="Bold"
+                    BackgroundColor="{DynamicResource Tertiary}"/>
                 
                 <Button Grid.Column="1"
                         Text="Copy API Key"
-                        Clicked="CopyApiKey"/>
+                        Clicked="CopyApiKey"
+                        FontAttributes="Bold"
+                        BackgroundColor="{DynamicResource Tertiary}"/>
             </Grid>
             
             <!-- Temperature and visibility settings -->
