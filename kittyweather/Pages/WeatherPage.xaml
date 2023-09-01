@@ -46,7 +46,6 @@
                    HorizontalOptions="FillAndExpand"
                    Completed="SearchCity"
                    Margin="20"/>
-
             
             <!-- City name with temperature and weather condition -->
             <StackLayout Grid.Row="1" Orientation="Vertical">
