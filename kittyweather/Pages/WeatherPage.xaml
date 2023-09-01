@@ -16,9 +16,24 @@
         </Style>
 
         <Style x:Key="TitleLabel" TargetType="Label">
+            <Setter Property="TextColor" Value="White"/>
             <Setter Property="HorizontalOptions" Value="Center"/>
             <Setter Property="VerticalOptions" Value="Start"/>
             <Setter Property="FontSize" Value="Large"/>
+        </Style>
+           
+        <Style x:Key="InfoText" TargetType="Label">
+            <Setter Property="TextColor" Value="White"/>
+            <Setter Property="HorizontalOptions" Value="Center"/>
+            <Setter Property="VerticalOptions" Value="Start"/>
+            <Setter Property="FontSize" Value="55"/>
+        </Style>
+           
+        <Style x:Key="LowerInfoText" TargetType="Label">
+               <Setter Property="TextColor" Value="White"/>
+               <Setter Property="HorizontalOptions" Value="Center"/>
+               <Setter Property="VerticalOptions" Value="End"/>
+               <Setter Property="FontSize" Value="20"/>
         </Style>
     </ContentPage.Resources>
     
@@ -37,12 +52,12 @@
             <StackLayout Grid.Row="1" Orientation="Vertical">
                 <Label HorizontalOptions="Center"
                     FontSize="40"
-                    TextColor="SlateGray"
+                    TextColor="White"
                     Text="{Binding Weather.Location.Name}"/>
 
                 <Label HorizontalOptions="Center"
                        FontSize="20"
-                       TextColor="SlateGray"
+                       TextColor="White"
                        Text="{Binding Path=Temperature}">
                 </Label>
             </StackLayout>
@@ -60,6 +75,7 @@
                 
                 <Label Padding="10, 4, 0, 0"
                        Text="WEATHER ALERT:"
+                       TextColor="White"
                        FontAttributes="Bold"
                        HorizontalOptions="Start"
                        VerticalOptions="Start"
@@ -68,6 +84,7 @@
                 <Label Padding="10, 30, 10, 45"
                        x:Name="WeatherAlertDesc"
                        Text=" "
+                       TextColor="White"
                        HorizontalOptions="Start"
                        VerticalOptions="Center"
                        FontSize="18"/>
@@ -78,7 +95,7 @@
                         Padding="00, 0, 230, 0"
                         BackgroundColor="#00FFFFFF"
                         Text="Show more..."
-                        TextColor="Black"
+                        TextColor="White"
                         FontSize="20"
                         CornerRadius="15"/>
             </Grid>
@@ -106,12 +123,14 @@
                                 <Label Grid.Row="1"
                                        FontSize="20"
                                        HorizontalOptions="Center"
-                                       Text="{Binding Temperature}"/>
+                                       Text="{Binding Temperature}"
+                                       TextColor="White"/>
                             
                                 <Label Grid.Row="2"
                                        FontSize="15"
                                        HorizontalOptions="Center"
-                                       Text="{Binding ParsedTime}"/>
+                                       Text="{Binding ParsedTime}"
+                                       TextColor="White"/>
                             </Grid>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
@@ -129,10 +148,8 @@
 
                 <Label Grid.Column="0"
                        Padding="0, 30, 0, 0"
-                       HorizontalOptions="Center"
-                       VerticalOptions="Start"
                        Text="{Binding Weather.Current.Humidity, StringFormat='{}{0}%'}"
-                       FontSize="55"/>
+                       Style="{StaticResource InfoText}"/>
 
                 <!-- Cloud cover -->
                 <BoxView Grid.Column="1" Style="{StaticResource InfoBoxView}"/>
@@ -143,11 +160,8 @@
 
                 <Label Grid.Column="1"
                        Padding="0, 25, 0, 0"
-                       HorizontalOptions="Center"
-                       VerticalOptions="Start"
                        Text="{Binding Weather.Current.Cloud, StringFormat='{}{0}%'}"
-                       FontSize="55"
-                />
+                       Style="{StaticResource InfoText}"/>
             </Grid>
 
             <!-- Air Pressure and Visibility -->
@@ -161,16 +175,12 @@
 
                 <Label Grid.Column="0"
                        Padding="0, 25, 0, 10"
-                       HorizontalOptions="Center"
-                       VerticalOptions="Start"
                        Text="{Binding AirPressure, StringFormat='{}{0:0.##}'}"
-                       FontSize="55" />
+                       Style="{StaticResource InfoText}"/>
 
                 <Label Grid.Column="0"
-                       HorizontalOptions="Center"
-                       VerticalOptions="EndAndExpand"
                        Text="{Binding AirPressureDesc}"
-                       FontSize="20"/>
+                       Style="{StaticResource LowerInfoText}"/>
 
                 <!-- Visibility -->
                 <BoxView Grid.Column="1" Style="{StaticResource InfoBoxView}"/>
@@ -181,16 +191,12 @@
 
                 <Label Grid.Column="1"
                        Padding="0, 25, 0, 10"
-                       HorizontalOptions="Center"
-                       VerticalOptions="Start"
                        Text="{Binding Visibility}"
-                       FontSize="55"/>
+                       Style="{StaticResource InfoText}"/>
 
                 <Label Grid.Column="1"
-                       HorizontalOptions="Center"
-                       VerticalOptions="EndAndExpand"
                        Text="{Binding VisibilityDesc}"
-                       FontSize="20"/>
+                       Style="{StaticResource LowerInfoText}"/>
             </Grid>
 
             <!-- UV Index and Precipitation -->
@@ -205,16 +211,12 @@
 
                 <Label Grid.Column="0"
                        Padding="0, 25, 0, 10"
-                       HorizontalOptions="Center"
-                       VerticalOptions="Start"
                        Text="{Binding Weather.Current.UvIndex}"
-                       FontSize="55" />
+                       Style="{StaticResource InfoText}"/>
 
                 <Label Grid.Column="0"
-                       HorizontalOptions="Center"
-                       VerticalOptions="EndAndExpand"
                        Text="{Binding UvIndexDesc}"
-                       FontSize="20"/>
+                       Style="{StaticResource LowerInfoText}"/>
 
                 <!-- Precipitation -->
                 <BoxView Grid.Column="1" Style="{StaticResource InfoBoxView}"/>
@@ -225,16 +227,12 @@
 
                 <Label Grid.Column="1"
                        Padding="0, 25, 0, 10"
-                       HorizontalOptions="Center"
-                       VerticalOptions="Start"
                        Text="{Binding Precipitation}"
-                       FontSize="55"/>
+                       Style="{StaticResource InfoText}"/>
 
                 <Label Grid.Column="1"
-                       HorizontalOptions="Center"
-                       VerticalOptions="EndAndExpand"
                        Text="{Binding PrecipitationDesc}"
-                       FontSize="20"/>
+                       Style="{StaticResource LowerInfoText}"/>
             </Grid>
 
             <!-- Wind speed and direction -->
@@ -248,30 +246,22 @@
                 <!-- Wind speed -->
                 <Label Grid.Column="0"
                        Padding="0, 15, 0, 15"
-                       HorizontalOptions="Center"
-                       VerticalOptions="End"
                        Text="{Binding WindSpeed}"
-                       FontSize="55"/>
+                       Style="{StaticResource InfoText}"/>
 
                 <Label Grid.Column="0"
                        Text="{Binding WindSpeedDesc, StringFormat='{}Wind speed ({0})'}"
-                       HorizontalOptions="Center"
-                       VerticalOptions="End"
-                       FontSize="20"/>
+                       Style="{StaticResource LowerInfoText}"/>
 
                 <!-- Wind Direction -->
                 <Label Grid.Column="1"
                        Padding="0, 15, 0, 15"
-                       HorizontalOptions="Center"
-                       VerticalOptions="End"
                        Text="{Binding Weather.Current.WindDirection}"
-                       FontSize="55" />
+                       Style="{StaticResource InfoText}"/>
 
                 <Label Grid.Column="1"
                        Text="Wind direction"
-                       HorizontalOptions="Center"
-                       VerticalOptions="End"
-                       FontSize="20"/>
+                       Style="{StaticResource LowerInfoText}"/>
             </Grid>
 
             <!-- Astronomy -->
@@ -297,6 +287,7 @@
                     <Label HorizontalOptions="Center"
                            VerticalOptions="Start"
                            Text="{Binding Weather.Forecast.ForecastDay[0].Astro.Sunset}"
+                           TextColor="White"
                            FontSize="30" />
                 </StackLayout>
 
@@ -320,6 +311,7 @@
                     <Label HorizontalOptions="Center"
                            VerticalOptions="Start"
                            Text="{Binding Weather.Forecast.ForecastDay[0].Astro.Moonset}"
+                           TextColor="White"
                            FontSize="30" />
                 </StackLayout>
             </Grid>
