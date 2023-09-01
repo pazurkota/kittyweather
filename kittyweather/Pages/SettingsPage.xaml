@@ -18,6 +18,12 @@
             <Setter Property="FontSize" Value="50"/>
             <Setter Property="FontAttributes" Value="Bold"/>
         </Style>    
+        
+        <Style x:Key="SettingTitle" TargetType="Label">
+            <Setter Property="HorizontalTextAlignment" Value="Center"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="TextColor" Value="White"/>
+        </Style>
     </ContentPage.Resources>
     
     <ScrollView>
@@ -53,8 +59,7 @@
             <Grid Grid.Row="3" ColumnDefinitions="*, *" Margin="20" ColumnSpacing="20">
                 <Label Grid.Column="0"
                        Text="Temperature unit:"
-                       FontSize="20"
-                       HorizontalTextAlignment="Center"/>
+                       Style="{StaticResource SettingTitle}"/>
                 
                 <Picker Grid.Column="0" 
                         Title="Choose Option" 
@@ -67,8 +72,7 @@
                 
                 <Label Grid.Column="1"
                        Text="Visibility unit:"
-                       FontSize="20"
-                       HorizontalTextAlignment="Center"/>
+                       Style="{StaticResource SettingTitle}"/>
                 
                 <Picker Grid.Column="1" 
                         Title="Choose Option" 
@@ -84,8 +88,7 @@
             <Grid Grid.Row="4" ColumnDefinitions="*, *" Margin="20" ColumnSpacing="20">
                 <Label Grid.Column="0"
                        Text="Air Pressure unit:"
-                       FontSize="20"
-                       HorizontalTextAlignment="Center"/>
+                       Style="{StaticResource SettingTitle}"/>
                 
                 <Picker Grid.Column="0" 
                         Title="Choose Option" 
@@ -98,8 +101,7 @@
                 
                 <Label Grid.Column="1"
                        Text="Precipitation unit:"
-                       FontSize="20"
-                       HorizontalTextAlignment="Center"/>
+                       Style="{StaticResource SettingTitle}"/>
                 
                 <Picker Grid.Column="1" 
                         Title="Choose Option" 
@@ -115,8 +117,7 @@
             <Grid Grid.Row="5" Margin="20">
                 <Label Grid.Column="0"
                        Text="Wind speeds unit:"
-                       FontSize="20"
-                       HorizontalTextAlignment="Center"/>
+                       Style="{StaticResource SettingTitle}"/>
 
                 <Picker 
                         Title="Choose Option" 
