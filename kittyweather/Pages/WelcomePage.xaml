@@ -22,14 +22,14 @@
                HorizontalOptions="Center"
                VerticalOptions="Center"/>
 
-        <Entry Text="{Binding ApiKey}"
-               Placeholder="API Key"
+        <Entry Placeholder="API Key"
                PlaceholderColor="White"
                TextColor="White"
                HorizontalTextAlignment="Center"
                FontSize="20"
                HorizontalOptions="Fill"
-               VerticalOptions="Center"/>
+               VerticalOptions="Center"
+               Completed="ApiKeyEntry"/>
 
         <Label Text="In order to get API Key:&#10;&#10;1. Go to https://www.weatherapi.com/&#10;2. Create an account and generate API Key&#10;3. Enter the key and voila!" 
                TextColor="White"
