@@ -18,10 +18,10 @@ public partial class SettingsViewModel : ObservableObject {
     // Wind Speed: "windSpeedUnit" (KPH, MPH, M/S)
 
     public SettingsViewModel() {
+        SelectedPrecipitationUnit = Preferences.Get("precipitationUnit", "Millimeters");
         SelectedTemperatureUnit = Preferences.Get("temperatureUnit", "Celsius");
         SelectedVisibilityUnit = Preferences.Get("visibilityUnit", "Kilometers");
         SelectedAirPressureUnit = Preferences.Get("airPressureUnit", "Millibars");
-        SelectedPrecipitationUnit = Preferences.Get("precipitationUnit", "Millimeters");
         SelectedWindSpeedUnit = Preferences.Get("windSpeedUnit", "KPH");
     }
 

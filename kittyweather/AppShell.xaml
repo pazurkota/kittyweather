@@ -17,6 +17,9 @@
         <Tab Title="About" Icon="help.svg">
             <ShellContent ContentTemplate="{DataTemplate pages:AboutPage}"/>
         </Tab>
+        <Tab Title="testpage">
+            <ShellContent ContentTemplate="{DataTemplate pages:WelcomePage}"></ShellContent>
+        </Tab>
     </TabBar>
 
 </Shell>

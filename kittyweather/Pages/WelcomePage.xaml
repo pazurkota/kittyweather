@@ -2,8 +2,38 @@
 
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="kittyweather.Pages.WelcomePage">
-    <ContentPage.Content>
-        
-    </ContentPage.Content>
+             x:Class="kittyweather.Pages.WelcomePage"
+             BackgroundColor="{DynamicResource Primary}">
+    <StackLayout Margin="20" VerticalOptions="Center">
+        <Image Source="Images/Day/sunny.svg"
+               HeightRequest="200"
+               HorizontalOptions="Center"/>
+
+        <Label Text="Welcome to KittyWeather!"
+               FontSize="30"
+               FontAttributes="Bold"
+               TextColor="White"
+               HorizontalOptions="Center"/>
+
+        <Label Text="Thank you for downloading this app! In order to use application, please enter the API Key:"
+               FontSize="20"
+               TextColor="White"
+               VerticalTextAlignment="Center"
+               HorizontalOptions="Center"
+               VerticalOptions="Center"/>
+
+        <Entry Text="{Binding ApiKey}"
+               Placeholder="API Key"
+               PlaceholderColor="White"
+               TextColor="White"
+               HorizontalTextAlignment="Center"
+               FontSize="20"
+               HorizontalOptions="Fill"
+               VerticalOptions="Center"/>
+
+        <Label Text="In order to get API Key:&#10;&#10;1. Go to https://www.weatherapi.com/&#10;2. Create an account and generate API Key&#10;3. Enter the key and voila!" 
+               TextColor="White"
+               FontSize="15"
+               Margin="0, 30, 0, 0"/>
+    </StackLayout>
 </ContentPage>
