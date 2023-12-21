@@ -69,7 +69,7 @@
                    HeightRequest="300"/>
             
             <!-- Weather Alerts -->
-            <Grid Grid.Row="3" Margin="20, 0" x:Name="WeatherAlertBox" IsVisible="False">
+            <Grid Grid.Row="3" Margin="20, 0" x:Name="WeatherAlertBox" IsVisible="{Binding ShowAlert}">
                 <BoxView Style="{StaticResource InfoBoxView}"/>
                 
                 <Label Padding="10, 4, 0, 0"
@@ -82,7 +82,7 @@
                 
                 <Label Padding="10, 30, 10, 45"
                        x:Name="WeatherAlertDesc"
-                       Text=" "
+                       Text="{Binding AlertDesc}"
                        TextColor="White"
                        HorizontalOptions="Start"
                        VerticalOptions="Center"

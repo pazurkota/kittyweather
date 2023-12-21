@@ -1,32 +1,32 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using kittyweather.Data;
 
 namespace kittyweather.ViewModel;
 
 public partial class WeatherViewModel : ObservableObject
 {
+    double latitude;
+    double longitude;
+    
     readonly SettingsViewModel _settingsViewModel = new();
 
-    [ObservableProperty] private Weather weather;
-    [ObservableProperty] private List<Hour> hourlyWeather;
-
-    [ObservableProperty] private string temperature;
-
-    [ObservableProperty] private string visibility;
-    [ObservableProperty] private string visibilityDesc;
-
-    [ObservableProperty] private string airPressure;
-    [ObservableProperty] private string airPressureDesc;
-
-    [ObservableProperty] private string precipitation;
-    [ObservableProperty] private string precipitationDesc;
-
-    [ObservableProperty] private string uvIndexDesc;
+    [ObservableProperty] Weather weather;
+    [ObservableProperty] List<Hour> hourlyWeather;
+    [ObservableProperty] bool showAlert;
     
-    [ObservableProperty] private string windSpeed;
-    [ObservableProperty] private string windSpeedDesc;
-    
-    [ObservableProperty] private string weatherIcon;
+    [ObservableProperty] string temperature;
+    [ObservableProperty] string visibility;
+    [ObservableProperty] string visibilityDesc;
+    [ObservableProperty] string airPressure;
+    [ObservableProperty] string airPressureDesc;
+    [ObservableProperty] string precipitation;
+    [ObservableProperty] string precipitationDesc;
+    [ObservableProperty] string uvIndexDesc;
+    [ObservableProperty] string windSpeed;
+    [ObservableProperty] string windSpeedDesc;
+    [ObservableProperty] string weatherIcon;
+    [ObservableProperty] string alertDesc;
 
     public async Task GetWeatherData(double latitude, double longitude) {
         Weather data = await ApiService.GetWeather(latitude, longitude);
@@ -215,5 +215,41 @@ public partial class WeatherViewModel : ObservableObject
         };
 
         return dictionary;
+    }
+    
+    public async Task GetWeatherData()
+    {
+        try
+        {
+            var location = await Geolocation.GetLocationAsync();
+            
+            latitude = location.Latitude;
+            longitude = location.Longitude;
+
+            await GetWeatherData(latitude, longitude);
+        
+            GetHourlyWeather();
+            GetUvIndexDescription();
+            GetTemperature();
+            GetVisibility();
+            GetAirPressure();
+            GetPrecipitation();
+            SetWeatherIcon();
+            GetWindSpeed();
+        
+            var alert = Weather.Alerts.WeatherAlerts.FirstOrDefault();
+        
+            if (alert != null) {
+                ShowAlert = true;
+                AlertDesc = alert.AlertHeadline;
+            } else {
+                ShowAlert = false;
+            }
+        }
+        catch (UnauthorizedAccessException) {
+            await Shell.Current.DisplayAlert("Error", "Unable to download data: Please set the API Key in settings.", "OK");
+        } catch (Exception) {
+            await Shell.Current.DisplayAlert("Error", "Unable to download data: Please try again later.", "OK");
+        }   
     }
 }
