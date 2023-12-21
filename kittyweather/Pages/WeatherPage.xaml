@@ -280,7 +280,7 @@
 
                     <Line Stroke="White"
                           Margin="7, 0, 7, 0"
-                          X2="200" />
+                          X2="1000" />
 
                     <Label Style="{StaticResource TitleLabel}" Text="Sunset:"/>
 
@@ -305,7 +305,7 @@
 
                     <Line Stroke="White"
                           Margin="7, 0, 7, 0"
-                          X2="200" />
+                          X2="1000" />
 
                     <Label Style="{StaticResource TitleLabel}" Text="Moonset:"/>
 
