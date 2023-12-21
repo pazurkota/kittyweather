@@ -5,7 +5,7 @@ namespace kittyweather.ViewModel;
 
 public partial class WeatherViewModel : ObservableObject
 {
-    private readonly SettingsViewModel _settingsViewModel = new();
+    readonly SettingsViewModel _settingsViewModel = new();
 
     [ObservableProperty] private Weather weather;
     [ObservableProperty] private List<Hour> hourlyWeather;
@@ -162,7 +162,7 @@ public partial class WeatherViewModel : ObservableObject
         WeatherIcon = "Images/Day/" + GetWeatherIcon()[Weather.Current.Condition.ConditionCode];
     } 
     
-    private Dictionary<int, string> GetWeatherIcon() {
+    Dictionary<int, string> GetWeatherIcon() {
         var dictionary = new Dictionary<int, string> {
             {1000, "sunny.svg"},
             {1003, "partly_cloudy.svg"},
