@@ -28,18 +28,18 @@ public partial class WeatherViewModel : ObservableObject
     [ObservableProperty] string weatherIcon;
     [ObservableProperty] string alertDesc;
 
-    public async Task GetWeatherData(double latitude, double longitude) {
+    async Task GetWeatherData(double latitude, double longitude) {
         Weather data = await ApiService.GetWeather(latitude, longitude);
         Weather = data;
     }
 
-    public async Task GetWeatherData(string city)
+    async Task GetWeatherData(string city)
     {
         Weather data = await ApiService.GetWeather(city);
         Weather = data;
     }
 
-    public void GetUvIndexDescription() {
+    void GetUvIndexDescription() {
         string uvIndexDesc = Weather.Current.UvIndex switch
         {
             < 3 => "Low",
@@ -52,7 +52,7 @@ public partial class WeatherViewModel : ObservableObject
         UvIndexDesc = uvIndexDesc;
     }
     
-    public void GetHourlyWeather() {
+    void GetHourlyWeather() {
         var unit = _settingsViewModel.SelectedTemperatureUnit;
 
         var hourly = Weather.Forecast.ForecastDay[0].HourWeather;
@@ -79,7 +79,7 @@ public partial class WeatherViewModel : ObservableObject
         HourlyWeather = sortedHourly;
     }
     
-    public void GetTemperature() {
+    void GetTemperature() {
         var unit = _settingsViewModel.SelectedTemperatureUnit;
 
         switch (unit) {
@@ -92,7 +92,7 @@ public partial class WeatherViewModel : ObservableObject
         }
     }
 
-    public void GetVisibility() {
+    void GetVisibility() {
         var unit = _settingsViewModel.SelectedVisibilityUnit;
 
         switch (unit) {
@@ -107,7 +107,7 @@ public partial class WeatherViewModel : ObservableObject
         }
     }
 
-    public void GetAirPressure() {
+    void GetAirPressure() {
         var unit = _settingsViewModel.SelectedAirPressureUnit;
 
         switch (unit)
@@ -123,7 +123,7 @@ public partial class WeatherViewModel : ObservableObject
         }
     }
 
-    public void GetPrecipitation()
+    void GetPrecipitation()
     {
         var unit = _settingsViewModel.SelectedPrecipitationUnit;
 
@@ -140,7 +140,7 @@ public partial class WeatherViewModel : ObservableObject
         }
     }
 
-    public void GetWindSpeed() {
+    void GetWindSpeed() {
         var unit = _settingsViewModel.SelectedWindSpeedUnit;
         
         switch (unit) {
@@ -159,13 +159,13 @@ public partial class WeatherViewModel : ObservableObject
         }
     }
 
-    public void SetWeatherIcon()
+    void SetWeatherIcon()
     {
         int iconCode = Weather.Current.Condition.ConditionCode;
         WeatherIcon = "Images/Day/" + IconDictionary.GetWeatherIcon()[iconCode];
     } 
     
-    public async Task GetWeatherData()
+    public async Task GetLocationWeatherData()
     {
         try
         {
@@ -175,6 +175,37 @@ public partial class WeatherViewModel : ObservableObject
             longitude = location.Longitude;
 
             await GetWeatherData(latitude, longitude);
+        
+            GetHourlyWeather();
+            GetUvIndexDescription();
+            GetTemperature();
+            GetVisibility();
+            GetAirPressure();
+            GetPrecipitation();
+            SetWeatherIcon();
+            GetWindSpeed();
+        
+            var alert = Weather.Alerts.WeatherAlerts.FirstOrDefault();
+        
+            if (alert != null) {
+                ShowAlert = true;
+                AlertDesc = alert.AlertHeadline;
+            } else {
+                ShowAlert = false;
+            }
+        }
+        catch (UnauthorizedAccessException) {
+            await Shell.Current.DisplayAlert("Error", "Unable to download data: Please set the API Key in settings.", "OK");
+        } catch (Exception) {
+            await Shell.Current.DisplayAlert("Error", "Unable to download data: Please try again later.", "OK");
+        }   
+    }
+    
+    public async Task GetCityWeatherData(string city)
+    {
+        try
+        {
+            await GetWeatherData(city);
         
             GetHourlyWeather();
             GetUvIndexDescription();
