@@ -21,6 +21,10 @@ public static class MauiProgram {
         builder.Services.AddSingleton<WeatherPage>();
         builder.Services.AddSingleton<WeatherViewModel>();
 
+        builder.Services.AddSingleton<SettingsPage>();
+
+        builder.Services.AddSingleton<WelcomePage>();
+
         return builder.Build();
     }
 }

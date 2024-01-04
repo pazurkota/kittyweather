@@ -7,9 +7,9 @@ public partial class WeatherPage : ContentPage {
     private double latitude;
     private double longitude;
 
-    public WeatherPage() {
+    public WeatherPage(WeatherViewModel vm) {
         InitializeComponent();
-        BindingContext = new WeatherViewModel();
+        BindingContext = vm;
     }
     
     private async Task GetDeviceLocation() {
