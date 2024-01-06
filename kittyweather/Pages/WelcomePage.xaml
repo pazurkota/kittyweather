@@ -4,9 +4,11 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="kittyweather.Pages.WelcomePage">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Kitty Weather!" />
-            <Label Text="Please enter your API key:" />
-        </StackLayout>
+        <Grid VerticalOptions="Center" HorizontalOptions="Center"  RowDefinitions="*, *, *">
+            <Label Grid.Row="0" Text="Welcome to Kitty Weather!" />
+            <Label Grid.Row="1" Text="Please enter your API key:" />
+            
+            <Entry Grid.Row="2" Completed="SetApiKey_OnClicked"/>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>
